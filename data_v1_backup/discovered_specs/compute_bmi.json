@@ -1,0 +1,32 @@
+{
+  "name": "compute_bmi",
+  "description": "Calculate the Body Mass Index (BMI) based on a person's weight in kilograms and height in meters. Use this tool when you need to assess whether an individual has a healthy body weight relative to their height. Do NOT use this tool for other health assessments or calculations unrelated to BMI.",
+  "parameters": [
+    {
+      "name": "weight_kg",
+      "type": "number",
+      "description": "The weight of the person in kilograms. Must be a positive number greater than 0. For example, 70.5.",
+      "required": true
+    },
+    {
+      "name": "height_m",
+      "type": "number",
+      "description": "The height of the person in meters. Must be a positive number greater than 0. For example, 1.75.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "bmi": {
+        "type": "number",
+        "description": "The calculated Body Mass Index (BMI) value, which is a dimensionless number."
+      },
+      "category": {
+        "type": "string",
+        "description": "The BMI category based on the calculated value (e.g., 'Underweight', 'Normal weight', 'Overweight', 'Obesity')."
+      }
+    },
+    "description": "Object containing the calculated BMI value and the corresponding weight category."
+  }
+}

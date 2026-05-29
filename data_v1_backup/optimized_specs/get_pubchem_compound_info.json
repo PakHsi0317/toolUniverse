@@ -1,0 +1,40 @@
+{
+  "name": "get_pubchem_compound_info",
+  "description": "Fetch detailed compound information from the PubChem database using a PubChem Compound ID (CID). Returns the compound's SMILES representation, molecular formula, and synonyms. Use this tool when you have a specific CID (e.g. '2244') and need detailed information about that compound. Do NOT use this tool for searching compounds by name or other identifiers; use 'search_pubchem_by_name' for that purpose.",
+  "parameters": [
+    {
+      "name": "cid",
+      "type": "integer",
+      "description": "The PubChem Compound ID, a positive integer representing the unique identifier for the compound (e.g. 2244). Must be a valid CID; the function raises an error if not found.",
+      "required": true
+    },
+    {
+      "name": "include_synonyms",
+      "type": "boolean",
+      "description": "Whether to include a list of synonyms for the compound in the response. Set to false to reduce response size if synonyms are not needed. Defaults to true.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "cid": {
+        "type": "integer",
+        "description": "The PubChem Compound ID (echoes input)."
+      },
+      "smiles": {
+        "type": "string",
+        "description": "SMILES representation of the compound, a textual representation of its structure."
+      },
+      "molecular_formula": {
+        "type": "string",
+        "description": "Molecular formula of the compound, indicating the number of each type of atom."
+      },
+      "synonyms": {
+        "type": "array",
+        "description": "List of synonyms for the compound, only present if include_synonyms=true."
+      }
+    },
+    "description": "Compound metadata including CID, SMILES, molecular formula, and optional synonyms."
+  }
+}

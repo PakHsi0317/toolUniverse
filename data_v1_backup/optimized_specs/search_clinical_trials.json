@@ -1,0 +1,38 @@
+{
+  "name": "search_clinical_trials",
+  "description": "Search ClinicalTrials.gov for clinical trials related to a specific medical condition. Returns trial IDs, titles, and recruitment status. Use this tool when you need information about ongoing or completed clinical trials for a particular condition. Do NOT use this tool for non-clinical trial data or for searching other databases; use 'search_pubmed' for literature searches instead.",
+  "parameters": [
+    {
+      "name": "condition",
+      "type": "string",
+      "description": "The medical condition to search for in clinical trials, represented as a free-text string. Should be specific enough to yield relevant results (e.g. 'diabetes', 'breast cancer').",
+      "required": true
+    },
+    {
+      "name": "max_results",
+      "type": "integer",
+      "description": "Maximum number of trials to return, must be between 1 and 100. Defaults to 20 if not specified.",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "Filter results by recruitment status. Must be one of: 'Recruiting', 'Not yet recruiting', 'Completed', 'Terminated', 'Suspended', 'Withdrawn'. If omitted, all statuses are included.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "trials": {
+        "type": "array",
+        "description": "List of clinical trials matching the search criteria. Each item includes: trial_id (string), title (string), recruitment_status (string)."
+      },
+      "total_count": {
+        "type": "integer",
+        "description": "Total number of trials found matching the criteria, which may exceed max_results."
+      }
+    },
+    "description": "Object containing 'trials' (list of trial metadata) and 'total_count' (total matches before truncation)."
+  }
+}

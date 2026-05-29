@@ -1,0 +1,32 @@
+{
+  "name": "search_drugbank_by_target",
+  "description": "Search DrugBank for drugs that interact with a specific protein target, identified by either a gene symbol or a UniProt accession ID. Returns a list of drug names and their mechanisms of action. Use this tool when you need to find drugs related to a specific protein target. Do NOT use this tool for searching drugs by other criteria (e.g., drug class or side effects) — consider using 'search_drugbank_by_class' for those cases.",
+  "parameters": [
+    {
+      "name": "target_identifier",
+      "type": "string",
+      "description": "The identifier for the protein target, which can be either a gene symbol (e.g., 'TP53') or a UniProt accession ID (e.g., 'P04637'). Must be a valid gene symbol or a valid UniProt accession; the function raises an error if not found.",
+      "required": true
+    },
+    {
+      "name": "identifier_type",
+      "type": "string",
+      "description": "The type of the target identifier provided. Must be either 'gene_symbol' or 'uniprot_accession'. This specifies how to interpret the target_identifier parameter.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "drugs": {
+        "type": "array",
+        "description": "List of drugs that act on the specified protein target. Each item includes: name (string), mechanism (string)."
+      },
+      "total_count": {
+        "type": "integer",
+        "description": "Total number of drugs found that act on the specified target."
+      }
+    },
+    "description": "Object containing a list of drugs and the total count of drugs found for the specified target."
+  }
+}

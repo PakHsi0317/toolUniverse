@@ -1,0 +1,179 @@
+{
+  "confounding_prompts": [
+    "What treatments are available for KRAS-mutant colorectal cancer?",
+    "Which drugs are effective for BRAF-positive melanoma?",
+    "Can you list options for TP53-related breast cancer?",
+    "What medications are used for ALK-positive lung cancer?",
+    "Find me therapies for CDK4/6-driven hormone receptor-positive breast cancer."
+  ],
+  "results": {
+    "A_detailed_target": {
+      "label": "[detailed] target spec, target prompts",
+      "n": 5,
+      "correct": 5,
+      "wrong_tool": 0,
+      "confused_with_partner": 0,
+      "picks": [
+        "search_drugbank_by_target",
+        "search_drugbank_by_target",
+        "search_drugbank_by_target",
+        "search_drugbank_by_target",
+        "search_drugbank_by_target"
+      ]
+    },
+    "A_detailed_indic": {
+      "label": "[detailed] indic  spec, indic  prompts",
+      "n": 5,
+      "correct": 5,
+      "wrong_tool": 0,
+      "confused_with_partner": 0,
+      "picks": [
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication"
+      ]
+    },
+    "A_vague_target": {
+      "label": "[vague] target spec, target prompts",
+      "n": 5,
+      "correct": 5,
+      "wrong_tool": 0,
+      "confused_with_partner": 0,
+      "picks": [
+        "search_drugs_by_protein",
+        "search_drugs_by_protein",
+        "search_drugs_by_protein",
+        "search_drugs_by_protein",
+        "search_drugs_by_protein"
+      ]
+    },
+    "A_vague_indic": {
+      "label": "[vague] indic  spec, indic  prompts",
+      "n": 5,
+      "correct": 5,
+      "wrong_tool": 0,
+      "confused_with_partner": 0,
+      "picks": [
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease"
+      ]
+    },
+    "B_detailed_target": {
+      "label": "[detailed] target spec, confounding prompts",
+      "n": 5,
+      "correct": 0,
+      "wrong_tool": 5,
+      "confused_with_partner": 5,
+      "picks": [
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication"
+      ]
+    },
+    "B_detailed_indic": {
+      "label": "[detailed] indic  spec, confounding prompts",
+      "n": 5,
+      "correct": 4,
+      "wrong_tool": 1,
+      "confused_with_partner": 1,
+      "picks": [
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_target",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication"
+      ]
+    },
+    "B_vague_target": {
+      "label": "[vague] target spec, confounding prompts",
+      "n": 5,
+      "correct": 0,
+      "wrong_tool": 5,
+      "confused_with_partner": 5,
+      "picks": [
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease"
+      ]
+    },
+    "B_vague_indic": {
+      "label": "[vague] indic  spec, confounding prompts",
+      "n": 5,
+      "correct": 5,
+      "wrong_tool": 0,
+      "confused_with_partner": 0,
+      "picks": [
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease"
+      ]
+    },
+    "C_detailed_target": {
+      "label": "[detailed] target ABLATED, confounding prompts",
+      "n": 5,
+      "correct": 0,
+      "wrong_tool": 5,
+      "confused_with_partner": 5,
+      "picks": [
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication"
+      ]
+    },
+    "C_detailed_indic": {
+      "label": "[detailed] indic  ABLATED, confounding prompts",
+      "n": 5,
+      "correct": 4,
+      "wrong_tool": 1,
+      "confused_with_partner": 1,
+      "picks": [
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_target",
+        "search_drugbank_by_indication",
+        "search_drugbank_by_indication"
+      ]
+    },
+    "C_vague_target": {
+      "label": "[vague] target ABLATED, confounding prompts",
+      "n": 5,
+      "correct": 0,
+      "wrong_tool": 5,
+      "confused_with_partner": 5,
+      "picks": [
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease"
+      ]
+    },
+    "C_vague_indic": {
+      "label": "[vague] indic  ABLATED, confounding prompts",
+      "n": 5,
+      "correct": 5,
+      "wrong_tool": 0,
+      "confused_with_partner": 0,
+      "picks": [
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease",
+        "find_drugs_for_disease"
+      ]
+    }
+  }
+}

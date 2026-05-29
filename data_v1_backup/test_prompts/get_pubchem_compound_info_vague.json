@@ -1,0 +1,7 @@
+[
+  "Can you fetch the details for the compound with CAS number 50-00-0?",
+  "I need to know the molecular weight and boiling point of the compound represented by the SMILES string 'C1=CC=CC=C1'.",
+  "Dr. Johnson is researching a chemical with the InChI 'InChI=1S/C6H6/c1-2-4-6-5-3-1/h1-6H' and wants to understand its safety information.",
+  "What are the physical properties of the compound identified by the CAS number 64-17-5?",
+  "Please provide the chemical structure and solubility details for the compound with the identifier 'C2H5OH'."
+]

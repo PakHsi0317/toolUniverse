@@ -1,0 +1,222 @@
+[
+  {
+    "tool_id": "compute_bmi",
+    "tool_name": "compute_bmi",
+    "style": "detailed",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "convert_dna_to_rna",
+    "tool_name": "convert_dna_to_rna",
+    "style": "detailed",
+    "before_accuracy": 0.8,
+    "after_accuracy": 0.8,
+    "delta": 0.0,
+    "iterations_run": 2,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": true
+  },
+  {
+    "tool_id": "get_gene_by_symbol",
+    "tool_name": "get_ncbi_gene_info",
+    "style": "detailed",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "search_clinical_trials",
+    "tool_name": "search_clinical_trials",
+    "style": "detailed",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "get_pubchem_compound_info",
+    "tool_name": "get_pubchem_compound_info",
+    "style": "detailed",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "compute_pvalue_ttest",
+    "tool_name": "compute_two_sample_ttest_pvalue",
+    "style": "detailed",
+    "before_accuracy": 0.6,
+    "after_accuracy": 0.6,
+    "delta": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "max_iterations (3)",
+    "spec_changed": true
+  },
+  {
+    "tool_id": "get_protein_structure_by_pdb_id",
+    "tool_name": "get_rcsb_pdb_metadata",
+    "style": "detailed",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "search_pubmed_advanced",
+    "tool_name": "search_pubmed_articles",
+    "style": "detailed",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "search_drugs_by_target",
+    "tool_name": "search_drugbank_by_target",
+    "style": "detailed",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "search_drugs_by_indication",
+    "tool_name": "search_drugbank_by_indication",
+    "style": "detailed",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "compute_bmi_vague",
+    "tool_name": "compute_bmi",
+    "style": "vague",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "convert_dna_to_rna_vague",
+    "tool_name": "convert_dna_to_rna",
+    "style": "vague",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "get_gene_by_symbol_vague",
+    "tool_name": "get_gene_info",
+    "style": "vague",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "search_clinical_trials_vague",
+    "tool_name": "search_clinical_trials",
+    "style": "vague",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "get_pubchem_compound_info_vague",
+    "tool_name": "get_chemical_compound_info",
+    "style": "vague",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "compute_pvalue_ttest_vague",
+    "tool_name": "compare_measurement_groups",
+    "style": "vague",
+    "before_accuracy": 0.0,
+    "after_accuracy": 0.0,
+    "delta": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "max_iterations (3)",
+    "spec_changed": true
+  },
+  {
+    "tool_id": "get_protein_structure_by_pdb_id_vague",
+    "tool_name": "get_protein_structure_info",
+    "style": "vague",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "search_pubmed_advanced_vague",
+    "tool_name": "search_pubmed",
+    "style": "vague",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "search_drugs_by_target_vague",
+    "tool_name": "search_drugs_by_protein",
+    "style": "vague",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "tool_id": "search_drugs_by_indication_vague",
+    "tool_name": "find_drugs_for_disease",
+    "style": "vague",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  }
+]

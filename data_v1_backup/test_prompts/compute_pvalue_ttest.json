@@ -1,0 +1,7 @@
+[
+  "Can you compare the average blood pressure readings from two different groups of patients, one taking lisinopril and the other not, to see if there's a significant difference?",
+  "Dr. Lee is investigating the effect of a new diet on cholesterol levels; he has two sets of data from participants, one set with values [180, 190, 200] and another with [170, 175, 180].",
+  "I have two samples of test scores from students in different classes; the first class scored [88, 92, 85] and the second class scored [78, 80, 82]. What does the analysis show?",
+  "Please determine if there's a significant difference in the average weight loss between participants using a low-carb diet versus those on a standard diet based on their recorded weights.",
+  "After analyzing the growth rates of two different plant species, I have the following measurements: species A [12.5, 13.0, 11.8] and species B [10.5, 10.8, 11.0]. Can you calculate the p-value for these samples?"
+]

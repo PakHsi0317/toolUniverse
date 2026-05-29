@@ -1,0 +1,44 @@
+{
+  "name": "get_ncbi_gene_info",
+  "description": "Look up gene information from the NCBI Entrez database using the official HGNC gene symbol (e.g. 'BRCA1', 'TP53'). Returns details such as gene name, organism, chromosome location, and function. Use this tool when you have a specific HGNC gene symbol. Do NOT use this tool for non-HGNC identifiers or for searching by gene name; use 'search_ncbi_by_name' for broader queries.",
+  "parameters": [
+    {
+      "name": "gene_symbol",
+      "type": "string",
+      "description": "The official HGNC gene symbol, a string of uppercase letters (e.g. 'BRCA1'). Must be a valid HGNC symbol; the function raises an error if not found.",
+      "required": true
+    },
+    {
+      "name": "include_function",
+      "type": "boolean",
+      "description": "Whether to include a description of the gene's biological function in the response. Set to false to reduce response size if only basic metadata is needed. Defaults to true.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "gene_symbol": {
+        "type": "string",
+        "description": "The official HGNC gene symbol (echoes input, uppercase)."
+      },
+      "gene_name": {
+        "type": "string",
+        "description": "Full name of the gene as provided by NCBI."
+      },
+      "organism": {
+        "type": "string",
+        "description": "Scientific name of the organism (e.g. 'Homo sapiens')."
+      },
+      "chromosome_location": {
+        "type": "string",
+        "description": "Chromosomal location of the gene (e.g. '17q21.31')."
+      },
+      "function": {
+        "type": "string",
+        "description": "Free-text description of the gene's biological function. Only present if include_function=true."
+      }
+    },
+    "description": "Gene metadata including symbol, name, organism, chromosome location, and optional function description."
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "search_clinical_trials",
+  "description": "Search for clinical trials related to a specific disease or condition. Use this tool when you need to find ongoing or completed clinical trials for a particular disease. Do NOT use this tool for non-clinical research studies or for general medical information; for broader medical literature, consider using 'search_pubmed'.",
+  "parameters": [
+    {
+      "name": "disease_name",
+      "type": "string",
+      "description": "The name of the disease or condition to search for clinical trials. Should be a complete name or commonly used abbreviation (e.g. 'diabetes', 'breast cancer'). Must not exceed 100 characters.",
+      "required": true
+    },
+    {
+      "name": "phase",
+      "type": "string",
+      "description": "The phase of clinical trials to filter results. Must be one of: 'Phase 1', 'Phase 2', 'Phase 3', 'Phase 4', or 'All'. Defaults to 'All' if not specified.",
+      "required": false
+    },
+    {
+      "name": "location",
+      "type": "string",
+      "description": "Geographical location to filter clinical trials (e.g. 'United States', 'Europe'). Must not exceed 100 characters. Omit to include trials from all locations.",
+      "required": false
+    },
+    {
+      "name": "max_results",
+      "type": "integer",
+      "description": "Maximum number of clinical trials to return, ranked by relevance. Must be between 1 and 100. Defaults to 20 if not specified.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "trials": {
+        "type": "array",
+        "description": "List of clinical trials matching the search criteria. Each item includes: trial_id (string), title (string), phase (string), location (string), status (string), and start_date (ISO 8601 date)."
+      },
+      "total_count": {
+        "type": "integer",
+        "description": "Total number of clinical trials found matching the criteria, which may exceed max_results."
+      }
+    },
+    "description": "Object containing 'trials' (list of matching clinical trials) and 'total_count' (total matches before truncation)."
+  }
+}

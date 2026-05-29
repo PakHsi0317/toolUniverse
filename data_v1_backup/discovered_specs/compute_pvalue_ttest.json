@@ -1,0 +1,42 @@
+{
+  "name": "compute_two_sample_ttest_pvalue",
+  "description": "Compute the two-tailed p-value for an independent two-sample t-test given two arrays of numeric measurements. Use this tool when you need to compare the means of two independent groups to determine if they are significantly different. Do NOT use this tool for paired samples or when the sample sizes are very small (n < 2) — consider using non-parametric tests like the Mann-Whitney U test instead.",
+  "parameters": [
+    {
+      "name": "sample_a",
+      "type": "array",
+      "description": "Array of numeric measurements for the first sample. Must contain at least 2 numeric values. Example: [5.1, 6.2, 7.3].",
+      "required": true
+    },
+    {
+      "name": "sample_b",
+      "type": "array",
+      "description": "Array of numeric measurements for the second sample. Must contain at least 2 numeric values. Example: [4.8, 5.9, 6.1].",
+      "required": true
+    },
+    {
+      "name": "use_welch",
+      "type": "boolean",
+      "description": "Whether to apply Welch's correction for unequal variances. Set to true to use Welch's t-test, which is more robust when variances are unequal. Defaults to false.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "p_value": {
+        "type": "number",
+        "description": "The two-tailed p-value resulting from the t-test, indicating the probability of observing the data if the null hypothesis is true."
+      },
+      "t_statistic": {
+        "type": "number",
+        "description": "The calculated t-statistic for the test, which measures the size of the difference relative to the variation in the sample data."
+      },
+      "degrees_of_freedom": {
+        "type": "number",
+        "description": "The degrees of freedom used in the t-test calculation."
+      }
+    },
+    "description": "Results of the t-test including the p-value, t-statistic, and degrees of freedom."
+  }
+}

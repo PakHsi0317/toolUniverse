@@ -1,0 +1,22 @@
+{
+  "name": "convert_dna_to_rna",
+  "description": "Convert a DNA sequence into its corresponding RNA sequence by replacing thymine (T) with uracil (U). Use this tool when you have a DNA sequence that you need to transcribe into RNA. Do NOT use this tool for sequences that are already RNA or for other types of biological transformations (e.g., protein synthesis).",
+  "parameters": [
+    {
+      "name": "dna_sequence",
+      "type": "string",
+      "description": "The DNA sequence to convert, represented as a string of nucleotide codes (A, T, C, G). Must not contain any whitespace, line breaks, or invalid characters. Length must be between 1 and 10,000 characters.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "rna_sequence": {
+        "type": "string",
+        "description": "The resulting RNA sequence after conversion, with thymine (T) replaced by uracil (U)."
+      }
+    },
+    "description": "Object containing the converted RNA sequence."
+  }
+}

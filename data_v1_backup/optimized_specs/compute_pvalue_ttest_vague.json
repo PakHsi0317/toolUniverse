@@ -1,0 +1,48 @@
+{
+  "name": "compare_measurement_groups",
+  "description": "Perform statistical comparison between two groups of measurements to assess differences in their means or distributions. Use this tool when you have two sets of numerical data and want to determine if they are statistically significantly different. If the user does not provide the numerical data, explicitly ask for the two sets of measurements. If the user only describes the groups without providing data, do not invoke this tool.",
+  "parameters": [
+    {
+      "name": "group_a",
+      "type": "array",
+      "description": "First group of measurements, represented as an array of numbers. Each measurement must be a finite number. The group must contain at least 2 measurements.",
+      "required": true
+    },
+    {
+      "name": "group_b",
+      "type": "array",
+      "description": "Second group of measurements, represented as an array of numbers. Each measurement must be a finite number. The group must contain at least 2 measurements.",
+      "required": true
+    },
+    {
+      "name": "test_type",
+      "type": "string",
+      "description": "Type of statistical test to perform. Must be one of: 't-test' for comparing means or 'mann-whitney' for comparing distributions. Defaults to 't-test' if not specified.",
+      "required": false
+    },
+    {
+      "name": "alpha_level",
+      "type": "number",
+      "description": "Significance level for the statistical test, as a decimal (e.g. 0.05 for 5% significance). Must be between 0 and 1. Defaults to 0.05 if not specified.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "p_value": {
+        "type": "number",
+        "description": "P-value from the statistical test indicating the probability of observing the data if the null hypothesis is true (lower values indicate stronger evidence against the null hypothesis)."
+      },
+      "test_statistic": {
+        "type": "number",
+        "description": "Test statistic value calculated from the data, which varies depending on the test type used."
+      },
+      "significant": {
+        "type": "boolean",
+        "description": "Indicates whether the result is statistically significant based on the provided alpha level."
+      }
+    },
+    "description": "Results of the statistical comparison including p-value, test statistic, and significance indication."
+  }
+}

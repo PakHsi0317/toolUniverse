@@ -1,0 +1,32 @@
+{
+  "name": "search_drugbank_by_indication",
+  "description": "Search DrugBank for drugs that are approved or commonly prescribed for a specific medical indication (disease or condition name). Returns drug names and their approval status. Use this tool when you need information about drugs related to a specific condition. Do NOT use this tool for general drug information or for searching by drug name; use 'search_drugbank_by_name' for that purpose.",
+  "parameters": [
+    {
+      "name": "indication",
+      "type": "string",
+      "description": "The medical indication (disease or condition name) for which to search drugs. Should be a descriptive string (e.g. 'hypertension', 'diabetes'). Length must be between 3 and 100 characters.",
+      "required": true
+    },
+    {
+      "name": "include_approval_status",
+      "type": "boolean",
+      "description": "Whether to include the approval status of the drugs in the response. Defaults to true.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "drugs": {
+        "type": "array",
+        "description": "List of drugs related to the specified indication. Each item includes: name (string), approval_status (string)."
+      },
+      "total_count": {
+        "type": "integer",
+        "description": "Total number of drugs found for the specified indication."
+      }
+    },
+    "description": "Object containing a list of drugs and the total count of drugs found for the given medical indication."
+  }
+}

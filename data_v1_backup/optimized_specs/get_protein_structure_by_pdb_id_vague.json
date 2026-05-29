@@ -1,0 +1,44 @@
+{
+  "name": "get_protein_structure_info",
+  "description": "Fetch detailed information about a protein structure from the Protein Data Bank (PDB) using a PDB ID. Returns metadata including the protein name, organism, resolution, and structural details. Use this tool when you have a specific PDB ID (e.g. '1A0S'). Do NOT use this tool for general protein information; for that, use 'get_uniprot_protein_info'.",
+  "parameters": [
+    {
+      "name": "pdb_id",
+      "type": "string",
+      "description": "The 4-character PDB identifier for the protein structure (e.g. '1A0S'). Must be a valid PDB ID; the function raises an error if not found.",
+      "required": true
+    },
+    {
+      "name": "include_details",
+      "type": "boolean",
+      "description": "Whether to include detailed structural information such as atom coordinates and connectivity. Set to false for a summary response. Defaults to true.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "pdb_id": {
+        "type": "string",
+        "description": "The PDB ID (echoes input, uppercased)."
+      },
+      "protein_name": {
+        "type": "string",
+        "description": "Recommended protein name from the PDB."
+      },
+      "organism": {
+        "type": "string",
+        "description": "Scientific name of the source organism (e.g. 'Homo sapiens')."
+      },
+      "resolution": {
+        "type": "number",
+        "description": "Resolution of the structure in angstroms (e.g. 2.0)."
+      },
+      "structural_details": {
+        "type": "object",
+        "description": "Detailed structural information including atom coordinates and connectivity. Only present if include_details=true."
+      }
+    },
+    "description": "Metadata about the protein structure, including optional detailed structural information."
+  }
+}

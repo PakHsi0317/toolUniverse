@@ -1,0 +1,84 @@
+{
+  "name": "get_chemical_compound_info",
+  "description": "Fetch detailed information about a chemical compound using its identifier (e.g., CAS number, SMILES, or InChI). Use this tool when you need specific data about a compound, such as its properties, structure, and safety information. Do NOT use this tool for general chemical queries or to search for compounds by name; use 'search_chemical_compound' for that purpose.",
+  "parameters": [
+    {
+      "name": "compound_id",
+      "type": "string",
+      "description": "The identifier for the chemical compound, which can be a CAS number (e.g., '50-00-0'), SMILES string (e.g., 'C1=CC=CC=C1'), or InChI (e.g., 'InChI=1S/C6H6/c1-2-4-6-5-3-1/h1-6H'). Must be a valid identifier format.",
+      "required": true
+    },
+    {
+      "name": "include_properties",
+      "type": "boolean",
+      "description": "Whether to include detailed physical and chemical properties of the compound in the response. Defaults to true.",
+      "required": false
+    },
+    {
+      "name": "include_safety_info",
+      "type": "boolean",
+      "description": "Whether to include safety and handling information for the compound. Defaults to false.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "compound_id": {
+        "type": "string",
+        "description": "The identifier of the compound (echoes input)."
+      },
+      "name": {
+        "type": "string",
+        "description": "Common name of the chemical compound."
+      },
+      "structure": {
+        "type": "string",
+        "description": "Chemical structure representation (e.g., SMILES or InChI format)."
+      },
+      "properties": {
+        "type": "object",
+        "description": "Physical and chemical properties of the compound, only present if include_properties=true.",
+        "properties": {
+          "molecular_weight": {
+            "type": "number",
+            "description": "Molecular weight of the compound in g/mol."
+          },
+          "melting_point": {
+            "type": "number",
+            "description": "Melting point in degrees Celsius."
+          },
+          "boiling_point": {
+            "type": "number",
+            "description": "Boiling point in degrees Celsius."
+          },
+          "solubility": {
+            "type": "string",
+            "description": "Solubility information in various solvents."
+          }
+        }
+      },
+      "safety_info": {
+        "type": "object",
+        "description": "Safety and handling information for the compound, only present if include_safety_info=true.",
+        "properties": {
+          "hazard_statements": {
+            "type": "array",
+            "description": "List of hazard statements associated with the compound.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "precautionary_statements": {
+            "type": "array",
+            "description": "List of precautionary statements for safe handling.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "description": "Object containing compound identifier, name, structure, optional properties, and optional safety information."
+  }
+}

@@ -8,9 +8,6 @@ secrets/
 # LLM call cache (regenerable, large)
 .llm_cache/
 
-# Local backup of v1 experimental data
-data_v1_backup/
-
 # Claude Code local settings
 .claude/
 

@@ -1,0 +1,153 @@
+{
+  "_meta": {
+    "description": "20 one-sentence NL descriptions: 10 'detailed' (information-dense, structured) + 10 'vague' (realistic user-level). The split lets us isolate Optimizer impact: with rich input, Discoverer already produces near-optimal spec → Optimizer has no room; with vague input, Discoverer must INFER parameters/types/units → those inferences are where Optimizer adds value.",
+    "convention": "id is the expected tool name + optional style suffix. style is 'detailed' or 'vague'."
+  },
+  "tools": [
+    {
+      "id": "compute_bmi",
+      "style": "detailed",
+      "category": "computation",
+      "difficulty": "easy",
+      "description": "Compute body mass index (BMI) given a person's weight in kilograms and height in meters."
+    },
+    {
+      "id": "convert_dna_to_rna",
+      "style": "detailed",
+      "category": "computation",
+      "difficulty": "easy",
+      "description": "Convert a DNA sequence to its corresponding RNA sequence by transcribing thymine (T) to uracil (U)."
+    },
+    {
+      "id": "get_gene_by_symbol",
+      "style": "detailed",
+      "category": "api_wrapper",
+      "difficulty": "easy",
+      "description": "Look up gene information from NCBI Entrez by official HGNC gene symbol (e.g. 'BRCA1', 'TP53')."
+    },
+    {
+      "id": "search_clinical_trials",
+      "style": "detailed",
+      "category": "data_retrieval",
+      "difficulty": "easy",
+      "description": "Search ClinicalTrials.gov for trials studying a specific medical condition, returning trial IDs, titles, and recruitment status."
+    },
+    {
+      "id": "get_pubchem_compound_info",
+      "style": "detailed",
+      "category": "api_wrapper",
+      "difficulty": "easy",
+      "description": "Fetch detailed compound information from PubChem given a PubChem Compound ID (CID) number, including SMILES, molecular formula, and synonyms."
+    },
+    {
+      "id": "compute_pvalue_ttest",
+      "style": "detailed",
+      "category": "computation",
+      "difficulty": "medium",
+      "description": "Compute the two-tailed p-value for an independent two-sample t-test given two arrays of numeric measurements, with optional Welch correction for unequal variances."
+    },
+    {
+      "id": "get_protein_structure_by_pdb_id",
+      "style": "detailed",
+      "category": "api_wrapper",
+      "difficulty": "medium",
+      "description": "Retrieve protein 3D structure metadata from the RCSB Protein Data Bank by 4-character PDB ID, including resolution, experimental method, and chain composition."
+    },
+    {
+      "id": "search_pubmed_advanced",
+      "style": "detailed",
+      "category": "data_retrieval",
+      "difficulty": "medium",
+      "description": "Search PubMed for biomedical articles with optional filters for publication year range, journal name, and author last name, returning ranked article metadata."
+    },
+    {
+      "id": "search_drugs_by_target",
+      "style": "detailed",
+      "category": "api_wrapper",
+      "difficulty": "hard",
+      "description": "Search DrugBank for drugs that act on a specific protein target, given the target's gene symbol or UniProt accession, returning drug names and mechanisms.",
+      "adversarial_pair": "search_drugs_by_indication"
+    },
+    {
+      "id": "search_drugs_by_indication",
+      "style": "detailed",
+      "category": "api_wrapper",
+      "difficulty": "hard",
+      "description": "Search DrugBank for drugs approved or commonly prescribed for a specific medical indication (disease or condition name), returning drug names and approval status.",
+      "adversarial_pair": "search_drugs_by_target"
+    },
+
+    {
+      "id": "compute_bmi_vague",
+      "style": "vague",
+      "category": "computation",
+      "difficulty": "easy",
+      "description": "Calculate someone's BMI."
+    },
+    {
+      "id": "convert_dna_to_rna_vague",
+      "style": "vague",
+      "category": "computation",
+      "difficulty": "easy",
+      "description": "Convert DNA to RNA."
+    },
+    {
+      "id": "get_gene_by_symbol_vague",
+      "style": "vague",
+      "category": "api_wrapper",
+      "difficulty": "easy",
+      "description": "Look up info about a gene."
+    },
+    {
+      "id": "search_clinical_trials_vague",
+      "style": "vague",
+      "category": "data_retrieval",
+      "difficulty": "easy",
+      "description": "Find clinical trials for a disease."
+    },
+    {
+      "id": "get_pubchem_compound_info_vague",
+      "style": "vague",
+      "category": "api_wrapper",
+      "difficulty": "easy",
+      "description": "Get info about a chemical compound."
+    },
+    {
+      "id": "compute_pvalue_ttest_vague",
+      "style": "vague",
+      "category": "computation",
+      "difficulty": "medium",
+      "description": "Compare two groups of measurements statistically."
+    },
+    {
+      "id": "get_protein_structure_by_pdb_id_vague",
+      "style": "vague",
+      "category": "api_wrapper",
+      "difficulty": "medium",
+      "description": "Get info about a protein structure."
+    },
+    {
+      "id": "search_pubmed_advanced_vague",
+      "style": "vague",
+      "category": "data_retrieval",
+      "difficulty": "medium",
+      "description": "Find biomedical papers."
+    },
+    {
+      "id": "search_drugs_by_target_vague",
+      "style": "vague",
+      "category": "api_wrapper",
+      "difficulty": "hard",
+      "description": "Find drugs that target a protein.",
+      "adversarial_pair": "search_drugs_by_indication_vague"
+    },
+    {
+      "id": "search_drugs_by_indication_vague",
+      "style": "vague",
+      "category": "api_wrapper",
+      "difficulty": "hard",
+      "description": "Find drugs for a disease.",
+      "adversarial_pair": "search_drugs_by_target_vague"
+    }
+  ]
+}

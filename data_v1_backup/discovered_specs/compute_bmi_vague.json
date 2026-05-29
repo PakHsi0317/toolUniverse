@@ -1,0 +1,32 @@
+{
+  "name": "compute_bmi",
+  "description": "Calculate the Body Mass Index (BMI) based on a person's weight and height. Use this tool when you need to determine if someone is underweight, normal weight, overweight, or obese according to BMI classifications. Do NOT use this tool for individuals with atypical body compositions (e.g., athletes with high muscle mass) or for medical diagnoses; consult a healthcare professional for such cases.",
+  "parameters": [
+    {
+      "name": "weight_kg",
+      "type": "number",
+      "description": "The weight of the individual in kilograms. Must be a positive number greater than 0. For example, 70.5.",
+      "required": true
+    },
+    {
+      "name": "height_m",
+      "type": "number",
+      "description": "The height of the individual in meters. Must be a positive number greater than 0. For example, 1.75.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "bmi": {
+        "type": "number",
+        "description": "The calculated Body Mass Index (BMI) value. A BMI of 18.5-24.9 is considered normal weight."
+      },
+      "category": {
+        "type": "string",
+        "description": "The BMI category based on the calculated value. Possible values: 'underweight', 'normal weight', 'overweight', 'obese'."
+      }
+    },
+    "description": "Object containing the calculated BMI value and the corresponding weight category."
+  }
+}

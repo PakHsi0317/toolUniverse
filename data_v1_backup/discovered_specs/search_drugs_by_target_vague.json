@@ -1,0 +1,32 @@
+{
+  "name": "search_drugs_by_protein",
+  "description": "Find drugs that target a specific protein based on its UniProt accession ID. Returns a list of drugs, their mechanisms of action, and relevant clinical information. Use this tool when you need to identify pharmacological agents related to a specific protein. Do NOT use this tool for general drug searches unrelated to proteins; for that, consider using 'search_drugs_by_name'.",
+  "parameters": [
+    {
+      "name": "accession_id",
+      "type": "string",
+      "description": "The UniProt accession identifier of the target protein, a 6 or 10 character alphanumeric code (e.g. 'P04637'). Case-insensitive but conventionally uppercase. Must be a valid UniProt accession; the function raises an error if not found.",
+      "required": true
+    },
+    {
+      "name": "include_clinical_data",
+      "type": "boolean",
+      "description": "Whether to include detailed clinical data about the drugs, such as indications and side effects. Set to false for a more concise response. Defaults to true.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "drugs": {
+        "type": "array",
+        "description": "List of drugs targeting the specified protein. Each item includes: drug_name (string), mechanism_of_action (string), and clinical_info (string, only present if include_clinical_data=true)."
+      },
+      "total_count": {
+        "type": "integer",
+        "description": "Total number of drugs found targeting the protein."
+      }
+    },
+    "description": "Object containing 'drugs' (list of drug information) and 'total_count' (total matches)."
+  }
+}

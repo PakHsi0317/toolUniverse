@@ -1,0 +1,56 @@
+{
+  "name": "search_pubmed_articles",
+  "description": "Search PubMed for biomedical articles based on a free-text query with optional filters for publication year range, journal name, and author last name. Use this tool when the user requests to find scientific papers or literature on a biomedical topic. Do NOT use for non-biomedical literature (e.g. CS papers — use arXiv tools instead).",
+  "parameters": [
+    {
+      "name": "query",
+      "type": "string",
+      "description": "Free-text search query using PubMed query syntax. Supports Boolean operators (AND, OR, NOT) and MeSH terms. Example: 'cancer AND therapy'. Should be a complete query string, not just keywords.",
+      "required": true
+    },
+    {
+      "name": "min_year",
+      "type": "integer",
+      "description": "Earliest publication year to include (inclusive), as a 4-digit year (e.g. 2020). Articles published before this year are excluded. Omit to include all years.",
+      "required": false
+    },
+    {
+      "name": "max_year",
+      "type": "integer",
+      "description": "Latest publication year to include (inclusive), as a 4-digit year (e.g. 2023). Articles published after this year are excluded. Omit to include all years.",
+      "required": false
+    },
+    {
+      "name": "journal_name",
+      "type": "string",
+      "description": "Name of the journal to filter results by. Should match the journal title as indexed in PubMed. Omit to include articles from all journals.",
+      "required": false
+    },
+    {
+      "name": "author_last_name",
+      "type": "string",
+      "description": "Last name of the author to filter results by. Should match the author's last name as indexed in PubMed. Omit to include articles by all authors.",
+      "required": false
+    },
+    {
+      "name": "max_results",
+      "type": "integer",
+      "description": "Maximum number of articles to return, ranked by PubMed relevance score. Must be between 1 and 100. Defaults to 20 if not specified.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "articles": {
+        "type": "array",
+        "description": "List of matching articles, ranked by relevance. Each item has: pmid (string), title (string), authors (array of strings), journal (string), year (integer), abstract (string)."
+      },
+      "total_count": {
+        "type": "integer",
+        "description": "Total number of matches in PubMed, which may exceed max_results."
+      }
+    },
+    "description": "Object with 'articles' (list of metadata) and 'total_count' (total matches before truncation)."
+  }
+}
