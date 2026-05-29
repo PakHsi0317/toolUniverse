@@ -1,0 +1,60 @@
+{
+  "name": "find_similar_molecules",
+  "description": "Find similar chemical molecules based on a provided SMILES (Simplified Molecular Input Line Entry System) string. Use this tool when you want to identify compounds with similar structures or properties. Do NOT use this tool for non-chemical queries or to search for biological sequences; for those, consider using appropriate biological tools.",
+  "parameters": [
+    {
+      "name": "smiles",
+      "type": "string",
+      "description": "The SMILES representation of the molecule to find similarities for. Must be a valid SMILES string, which encodes the structure of the molecule. Length must be between 5 and 500 characters.",
+      "required": true
+    },
+    {
+      "name": "max_results",
+      "type": "integer",
+      "description": "Maximum number of similar molecules to return. Must be between 1 and 100. Defaults to 10 if not specified.",
+      "required": false
+    },
+    {
+      "name": "similarity_threshold",
+      "type": "number",
+      "description": "Minimum similarity score (0.0 to 1.0) for returned molecules. Molecules with a similarity score below this threshold will be excluded. Defaults to 0.7 for moderate similarity.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "similar_molecules": {
+        "type": "array",
+        "description": "List of similar molecules, each represented by a structure containing: smiles (string), name (string), similarity_score (number).",
+        "items": {
+          "type": "object",
+          "properties": {
+            "smiles": {
+              "type": "string",
+              "description": "SMILES representation of the similar molecule."
+            },
+            "name": {
+              "type": "string",
+              "description": "Common name or identifier of the similar molecule."
+            },
+            "similarity_score": {
+              "type": "number",
+              "description": "Similarity score between the input molecule and the similar molecule (0.0 to 1.0)."
+            }
+          },
+          "required": [
+            "smiles",
+            "name",
+            "similarity_score"
+          ]
+        }
+      },
+      "total_count": {
+        "type": "integer",
+        "description": "Total number of similar molecules found, which may exceed max_results."
+      }
+    },
+    "description": "Object containing a list of similar molecules and the total count of matches."
+  }
+}

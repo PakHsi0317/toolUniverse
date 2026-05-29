@@ -1,0 +1,58 @@
+{
+  "name": "get_uniprot_protein_info",
+  "description": "Fetch detailed protein information from the UniProt database by UniProt accession ID. Returns the protein's name, organism, sequence, function description, subcellular location, and cross-references to other databases (PDB, Ensembl, etc.). Use this when you already know the UniProt accession (e.g. 'P04637'); to search by gene name or keyword instead, use 'search_uniprot_by_name'.",
+  "parameters": [
+    {
+      "name": "accession_id",
+      "type": "string",
+      "description": "The UniProt accession identifier, a 6 or 10 character alphanumeric code (e.g. 'P04637' for human TP53). Case-insensitive but conventionally uppercase. Must be a valid UniProt accession; the function raises an error if not found.",
+      "required": true
+    },
+    {
+      "name": "include_sequence",
+      "type": "boolean",
+      "description": "Whether to include the full amino acid sequence in the response. Set to false to reduce response size when only metadata is needed (sequences for some proteins exceed 30,000 characters). Defaults to true.",
+      "required": false
+    },
+    {
+      "name": "include_cross_references",
+      "type": "boolean",
+      "description": "Whether to include cross-reference IDs to other databases (PDB structures, Ensembl gene IDs, GO terms, etc.). Set to false for a leaner response. Defaults to true.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "accession_id": {
+        "type": "string",
+        "description": "The UniProt accession (echoes input, uppercased)."
+      },
+      "protein_name": {
+        "type": "string",
+        "description": "Recommended protein name from UniProt."
+      },
+      "organism": {
+        "type": "string",
+        "description": "Scientific name of the source organism (e.g. 'Homo sapiens')."
+      },
+      "sequence": {
+        "type": "string",
+        "description": "Amino acid sequence in single-letter IUPAC codes. Only present if include_sequence=true."
+      },
+      "function": {
+        "type": "string",
+        "description": "Free-text description of the protein's biological function."
+      },
+      "subcellular_location": {
+        "type": "array",
+        "description": "List of subcellular locations where the protein is found."
+      },
+      "cross_references": {
+        "type": "object",
+        "description": "Cross-reference IDs grouped by database (keys: 'PDB', 'Ensembl', 'GO', etc.). Only present if include_cross_references=true."
+      }
+    },
+    "description": "Protein metadata, optional sequence, and optional cross-references to other databases."
+  }
+}

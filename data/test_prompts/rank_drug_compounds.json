@@ -1,0 +1,7 @@
+[
+  "Can you evaluate the potential of these drug candidates for treating Alzheimer's based on their predicted binding affinities and toxicity risks?",
+  "Dr. Lee is comparing several compounds for Parkinson's treatment; he needs a ranking based on their binding affinity scores and blood-brain barrier penetration.",
+  "I have three compounds with binding affinities of -7.8, -8.1, and -7.5, toxicity risks of 0.2, 0.4, and 0.1, and blood-brain barrier scores of 0.9, 0.8, and 0.7; please rank them.",
+  "What are the best candidates among these drugs for epilepsy based on their binding affinities and toxicity risks?",
+  "For a study on multiple sclerosis, I need to rank compounds with the following metrics: binding affinities of -6.5, -7.0, and -8.3, toxicity risks of 0.3, 0.2, and 0.5, and blood-brain barrier scores of 0.6, 0.9, and 0.4."
+]

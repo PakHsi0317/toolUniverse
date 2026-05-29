@@ -1,0 +1,56 @@
+{
+  "failure_type_counts": {
+    "correct": 49,
+    "wrong_tool": 2,
+    "malformed_output": 4
+  },
+  "per_tool_accuracy": {
+    "compute_tanimoto_similarity": {
+      "correct": 3,
+      "total": 5
+    },
+    "convert_gene_symbol_to_ensembl_id": {
+      "correct": 5,
+      "total": 5
+    },
+    "fetch_pubmed_abstract": {
+      "correct": 4,
+      "total": 5
+    },
+    "find_similar_molecules": {
+      "correct": 5,
+      "total": 5
+    },
+    "get_drug_side_effects": {
+      "correct": 5,
+      "total": 5
+    },
+    "get_pdb_structure": {
+      "correct": 5,
+      "total": 5
+    },
+    "get_protein_tissue_expression": {
+      "correct": 5,
+      "total": 5
+    },
+    "predict_admet_properties": {
+      "correct": 5,
+      "total": 5
+    },
+    "rank_drug_compounds": {
+      "correct": 2,
+      "total": 5
+    },
+    "rank_therapeutic_targets": {
+      "correct": 5,
+      "total": 5
+    },
+    "search_biomedical_articles": {
+      "correct": 5,
+      "total": 5
+    }
+  },
+  "cross_tool_confusion": {
+    "compute_tanimoto_similarity__vs__find_similar_molecules": 2
+  }
+}

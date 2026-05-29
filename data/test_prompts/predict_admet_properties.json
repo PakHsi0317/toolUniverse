@@ -1,0 +1,7 @@
+[
+  "Can you evaluate the absorption and distribution properties of the molecule represented by the SMILES string 'CC(=O)OC1=CC=CC=C1C(=C)C(=O)O'?",
+  "Dr. Lee is interested in the metabolism and excretion rates of a compound with the SMILES 'C1CCCCC1'.",
+  "Please predict the ADMET properties, including toxicity, for the molecule with the SMILES 'CCN(CC)C(=O)C1=CC=CC=C1C(=C)C(=O)O'.",
+  "What are the predicted absorption and distribution values for the SMILES string 'CC(=O)N1C=CC2=C(C=C1)C(=O)C(=C2)C(=O)O'?",
+  "I'd like to know the toxicity level of the molecule with the SMILES 'C1=CC=C(C=C1)C(=O)O', can you include that in the prediction?"
+]

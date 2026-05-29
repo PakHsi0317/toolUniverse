@@ -1,0 +1,56 @@
+{
+  "name": "compute_blast_alignment",
+  "description": "Compute a local sequence alignment between two biological sequences using the BLAST (Basic Local Alignment Search Tool) algorithm. Returns alignment score, percent identity, e-value, and the aligned regions. Use this tool to assess sequence similarity between two specific sequences (NOT for searching a sequence against a database — use 'blast_search_database' for that).",
+  "parameters": [
+    {
+      "name": "query_sequence",
+      "type": "string",
+      "description": "The first biological sequence to align, as a raw string of single-letter codes (no FASTA header, no whitespace, no line breaks). For proteins use IUPAC amino acid codes (e.g. 'MAEGEIT...'); for nucleotides use A/C/G/T/U. Length must be between 10 and 10000 characters.",
+      "required": true
+    },
+    {
+      "name": "subject_sequence",
+      "type": "string",
+      "description": "The second biological sequence to align against the query, with the same format requirements as query_sequence (raw single-letter codes, no header, 10-10000 chars). Must be the same molecule type as query_sequence.",
+      "required": true
+    },
+    {
+      "name": "sequence_type",
+      "type": "string",
+      "description": "The biological molecule type of both sequences. Must be exactly one of: 'protein', 'nucleotide'. This selects the BLAST variant (blastp vs blastn) and the scoring matrix.",
+      "required": true
+    },
+    {
+      "name": "evalue_threshold",
+      "type": "number",
+      "description": "Maximum e-value threshold for reporting alignments, as a decimal (e.g. 0.001 for stringent, 10.0 for permissive). Alignments with e-value above this threshold are filtered out. Defaults to 10.0 if not specified.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "score": {
+        "type": "number",
+        "description": "Raw BLAST alignment score (higher = better alignment)."
+      },
+      "percent_identity": {
+        "type": "number",
+        "description": "Percent identity of the aligned region (0-100)."
+      },
+      "evalue": {
+        "type": "number",
+        "description": "Expectation value of the alignment (lower = more significant)."
+      },
+      "aligned_query": {
+        "type": "string",
+        "description": "Aligned query sequence with gap characters ('-') inserted."
+      },
+      "aligned_subject": {
+        "type": "string",
+        "description": "Aligned subject sequence with gap characters ('-') inserted."
+      }
+    },
+    "description": "Alignment statistics (score, percent_identity, evalue) and the gapped aligned sequences (aligned_query, aligned_subject)."
+  }
+}

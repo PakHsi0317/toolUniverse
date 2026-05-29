@@ -1,0 +1,38 @@
+{
+  "name": "search_pubmed",
+  "description": "Search the PubMed biomedical literature database for articles matching a free-text query. Returns a ranked list of article metadata including PMID, title, authors, journal, publication year, and abstract. Use this tool when the user asks to find scientific papers, literature reviews, or evidence on a biomedical topic. Do NOT use for non-biomedical literature (e.g. CS papers — use arXiv tools instead).",
+  "parameters": [
+    {
+      "name": "query",
+      "type": "string",
+      "description": "Free-text search query using PubMed query syntax. Supports Boolean operators (AND, OR, NOT) and MeSH terms. Example: 'BRCA1 AND breast cancer AND (therapy OR treatment)'. Should be a complete query string, not just keywords.",
+      "required": true
+    },
+    {
+      "name": "max_results",
+      "type": "integer",
+      "description": "Maximum number of articles to return, ranked by PubMed relevance score. Must be between 1 and 100. Defaults to 20 if not specified.",
+      "required": false
+    },
+    {
+      "name": "min_year",
+      "type": "integer",
+      "description": "Earliest publication year to include (inclusive), as a 4-digit year e.g. 2020. Articles published before this year are excluded. Omit to include all years.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "articles": {
+        "type": "array",
+        "description": "List of matching articles, ranked by relevance. Each item has: pmid (string), title (string), authors (array of strings), journal (string), year (integer), abstract (string)."
+      },
+      "total_count": {
+        "type": "integer",
+        "description": "Total number of matches in PubMed, which may exceed max_results."
+      }
+    },
+    "description": "Object with 'articles' (list of metadata) and 'total_count' (total matches before truncation)."
+  }
+}

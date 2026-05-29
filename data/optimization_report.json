@@ -1,0 +1,101 @@
+[
+  {
+    "spec_name": "compute_tanimoto_similarity",
+    "before_accuracy": 0.6,
+    "after_accuracy": 0.8,
+    "delta": 0.20000000000000007,
+    "iterations_run": 2,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": true
+  },
+  {
+    "spec_name": "convert_gene_symbol_to_ensembl_id",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "spec_name": "fetch_pubmed_abstract",
+    "before_accuracy": 0.8,
+    "after_accuracy": 0.8,
+    "delta": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "max_iterations (3)",
+    "spec_changed": true
+  },
+  {
+    "spec_name": "find_similar_molecules",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "spec_name": "get_drug_side_effects",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "spec_name": "get_pdb_structure",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "spec_name": "get_protein_tissue_expression",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "spec_name": "predict_admet_properties",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "spec_name": "rank_drug_compounds",
+    "before_accuracy": 0.4,
+    "after_accuracy": 0.4,
+    "delta": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "max_iterations (3)",
+    "spec_changed": true
+  },
+  {
+    "spec_name": "rank_therapeutic_targets",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  },
+  {
+    "spec_name": "search_biomedical_articles",
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "delta": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)",
+    "spec_changed": false
+  }
+]

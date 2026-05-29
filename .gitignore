@@ -1,0 +1,35 @@
+# Secrets — NEVER commit
+.env
+.env.*
+!.env.example.template
+*.key
+secrets/
+
+# LLM call cache (regenerable, large)
+.llm_cache/
+
+# Local backup of v1 experimental data
+data_v1_backup/
+
+# Claude Code local settings
+.claude/
+
+# Third-party / proprietary reference materials (not redistributable)
+paper.pdf
+paper_text.txt
+assignment_text.txt
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

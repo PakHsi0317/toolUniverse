@@ -1,0 +1,102 @@
+{
+  "discovered_pairs": [
+    {
+      "pair": [
+        "compute_tanimoto_similarity",
+        "find_similar_molecules"
+      ],
+      "baseline_confusion": 2,
+      "description_a": "Calculate the Tanimoto similarity coefficient between two molecules based on their SMILES (Simplified Molecular Input Line Entry System) representations. Use this tool when you need to compare the structural similarity of two chemical compounds. Do NOT use this tool for non-chemical structures or for comparing more than two molecules at once; for that, consider using a different similarity metric or tool.",
+      "description_b": "Find similar chemical molecules based on a provided SMILES (Simplified Molecular Input Line Entry System) string. Use this tool when you want to identify compounds with similar structures or properties. Do NOT use this tool for non-chemical queries or to search for biological sequences; for those, consider using appropriate biological tools."
+    }
+  ],
+  "experiments": {
+    "compute_tanimoto_similarity__vs__find_similar_molecules": {
+      "A_target_a": {
+        "label": "[A] compute_tanimoto_similarity spec, its prompts",
+        "n": 5,
+        "correct": 4,
+        "confused_with_partner": 0,
+        "picks": [
+          "compute_tanimoto_similarity",
+          "compute_tanimoto_similarity",
+          "compute_tanimoto_similarity",
+          "compute_tanimoto_similarity",
+          "compute_tanimoto_similarity"
+        ]
+      },
+      "A_target_b": {
+        "label": "[A] find_similar_molecules spec, its prompts",
+        "n": 5,
+        "correct": 5,
+        "confused_with_partner": 0,
+        "picks": [
+          "find_similar_molecules",
+          "find_similar_molecules",
+          "find_similar_molecules",
+          "find_similar_molecules",
+          "find_similar_molecules"
+        ]
+      },
+      "B_target_a": {
+        "label": "[B] compute_tanimoto_similarity spec, confounding",
+        "n": 5,
+        "correct": 0,
+        "confused_with_partner": 0,
+        "picks": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "B_target_b": {
+        "label": "[B] find_similar_molecules spec, confounding",
+        "n": 5,
+        "correct": 0,
+        "confused_with_partner": 0,
+        "picks": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "confounding_prompts": [
+        "What are the similarities between these two chemical structures?",
+        "Can you compare the two SMILES strings and find related compounds?",
+        "How can I evaluate the relationship between these two molecules?",
+        "What compounds share similar characteristics with these SMILES?",
+        "Is there a way to measure the similarity of these two chemical representations?"
+      ],
+      "C_target_a": {
+        "label": "[C] compute_tanimoto_similarity ABLATED, confounding",
+        "n": 5,
+        "correct": 0,
+        "confused_with_partner": 0,
+        "picks": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "C_target_b": {
+        "label": "[C] find_similar_molecules ABLATED, confounding",
+        "n": 5,
+        "correct": 0,
+        "confused_with_partner": 0,
+        "picks": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    }
+  }
+}

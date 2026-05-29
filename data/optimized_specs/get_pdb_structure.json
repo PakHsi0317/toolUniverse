@@ -1,0 +1,42 @@
+{
+  "name": "get_pdb_structure",
+  "description": "Retrieve the 3D structure of a protein from the Protein Data Bank (PDB) using a PDB ID. Use this tool when you have a specific PDB ID (e.g. '1A2B') and need the corresponding structural data. Do NOT use this tool for searching or querying multiple structures; for that, consider using 'search_pdb_by_keyword'.",
+  "parameters": [
+    {
+      "name": "pdb_id",
+      "type": "string",
+      "description": "The PDB identifier, a 4-character alphanumeric code (e.g. '1A2B'). Must be a valid PDB ID; the function raises an error if not found.",
+      "required": true
+    },
+    {
+      "name": "include_coordinates",
+      "type": "boolean",
+      "description": "Whether to include atomic coordinates in the response. Set to false to reduce response size when only metadata is needed. Defaults to true.",
+      "required": false
+    },
+    {
+      "name": "format",
+      "type": "string",
+      "description": "The format of the returned structure data. Must be one of: 'pdb', 'mmCIF'. Defaults to 'pdb'.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "pdb_id": {
+        "type": "string",
+        "description": "The PDB ID (echoes input)."
+      },
+      "structure_metadata": {
+        "type": "object",
+        "description": "Metadata about the structure, including title, authors, and resolution."
+      },
+      "atomic_coordinates": {
+        "type": "array",
+        "description": "List of atomic coordinates (x, y, z) for each atom in the structure. Only present if include_coordinates=true."
+      }
+    },
+    "description": "Object containing the PDB ID, structure metadata, and optional atomic coordinates."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "rank_drug_compounds",
+  "description": "Rank candidate drug compounds based on their predicted binding affinity, toxicity risk, and blood-brain barrier penetration score. Use this tool when you have multiple drug candidates and need to evaluate their potential effectiveness and safety. If the user asks to evaluate drug candidates without providing specific metrics, prompt them to provide the necessary data. If no metrics are provided, ask the user for the binding affinity scores, toxicity risks, and blood-brain barrier penetration scores.",
+  "parameters": [
+    {
+      "name": "binding_affinity_scores",
+      "type": "array",
+      "description": "Array of predicted binding affinity scores for each drug compound, represented as decimal numbers (e.g. -7.5, -8.2). Each score must be a valid numerical value.",
+      "required": true
+    },
+    {
+      "name": "toxicity_risks",
+      "type": "array",
+      "description": "Array of toxicity risk scores for each drug compound, represented as decimal numbers (e.g. 0.1 for low risk, 0.9 for high risk). Each score must be between 0.0 and 1.0.",
+      "required": true
+    },
+    {
+      "name": "bb_penetration_scores",
+      "type": "array",
+      "description": "Array of blood-brain barrier penetration scores for each drug compound, represented as decimal numbers (e.g. 0.0 for no penetration, 1.0 for high penetration). Each score must be between 0.0 and 1.0.",
+      "required": true
+    },
+    {
+      "name": "num_compounds",
+      "type": "integer",
+      "description": "Number of drug compounds to rank. Must be a positive integer. Defaults to the length of the input arrays if not specified.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "ranked_compounds": {
+        "type": "array",
+        "description": "List of ranked drug compounds based on the combined scores. Each item includes the compound index and its overall score.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "compound_index": {
+              "type": "integer",
+              "description": "Index of the drug compound in the input arrays."
+            },
+            "overall_score": {
+              "type": "number",
+              "description": "Combined score based on binding affinity, toxicity risk, and blood-brain barrier penetration."
+            }
+          }
+        }
+      }
+    },
+    "description": "Object containing the ranked list of drug compounds with their indices and overall scores."
+  }
+}

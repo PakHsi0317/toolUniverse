@@ -1,0 +1,68 @@
+[
+  {
+    "index": 1,
+    "description": "a tool that fetches the abstract of a PubMed paper given its PMID",
+    "spec_name": "fetch_pubmed_abstract",
+    "num_params": 1
+  },
+  {
+    "index": 2,
+    "description": "a tool that searches biomedical articles related to a disease name",
+    "spec_name": "search_biomedical_articles",
+    "num_params": 3
+  },
+  {
+    "index": 3,
+    "description": "a tool that gets known side effects of a drug given the drug name",
+    "spec_name": "get_drug_side_effects",
+    "num_params": 3
+  },
+  {
+    "index": 4,
+    "description": "a tool that converts a gene symbol to its Ensembl gene ID",
+    "spec_name": "convert_gene_symbol_to_ensembl_id",
+    "num_params": 1
+  },
+  {
+    "index": 5,
+    "description": "a tool that retrieves protein tissue expression information given a gene name",
+    "spec_name": "get_protein_tissue_expression",
+    "num_params": 3
+  },
+  {
+    "index": 6,
+    "description": "a tool that finds similar molecules given a SMILES string",
+    "spec_name": "find_similar_molecules",
+    "num_params": 3
+  },
+  {
+    "index": 7,
+    "description": "a tool that predicts ADMET properties of a molecule given its SMILES string",
+    "spec_name": "predict_admet_properties",
+    "num_params": 3
+  },
+  {
+    "index": 8,
+    "description": "a tool that calculates the Tanimoto similarity between two molecules given their SMILES strings",
+    "spec_name": "compute_tanimoto_similarity",
+    "num_params": 2
+  },
+  {
+    "index": 9,
+    "description": "a tool that ranks candidate drug compounds by combining their predicted binding affinity, toxicity risk, and blood-brain barrier penetration score",
+    "spec_name": "rank_drug_compounds",
+    "num_params": 4
+  },
+  {
+    "index": 10,
+    "description": "a tool that ranks possible therapeutic targets for a disease based on genetic evidence, tissue expression, druggability, and literature support",
+    "spec_name": "rank_therapeutic_targets",
+    "num_params": 5
+  },
+  {
+    "index": 11,
+    "description": "a tool that retrieves protein 3D structure given a PDB ID",
+    "spec_name": "get_pdb_structure",
+    "num_params": 3
+  }
+]

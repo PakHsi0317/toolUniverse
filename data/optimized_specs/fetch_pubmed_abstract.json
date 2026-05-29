@@ -1,0 +1,22 @@
+{
+  "name": "fetch_pubmed_abstract",
+  "description": "Fetch the abstract of a PubMed article given its PMID (PubMed Identifier). Use this tool when you have a valid PMID and need to retrieve the abstract of the corresponding article. If the user mentions an article and indicates they will provide the PMID later, proceed with the tool call and ask for the PMID.",
+  "parameters": [
+    {
+      "name": "pmid",
+      "type": "string",
+      "description": "The PubMed Identifier (PMID) for the article, a unique 8-digit number (e.g., '12345678'). Must be a valid PMID; the function raises an error if not found.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "abstract": {
+        "type": "string",
+        "description": "The abstract text of the PubMed article. This may include background, methods, results, and conclusions."
+      }
+    },
+    "description": "Object containing the abstract of the requested PubMed article."
+  }
+}

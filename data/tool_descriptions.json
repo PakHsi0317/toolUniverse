@@ -1,0 +1,19 @@
+{
+  "_meta": {
+    "description": "11 NL tool descriptions for the biomedical research workflow. Each entry is a plain-English one-sentence description with no id, category, difficulty, or adversarial-pair markers. The Discoverer assigns a spec.name to each description, which becomes the canonical identifier used by all downstream scripts (file naming, baseline keys, optimization tracking). Adversarial pairs are discovered from baseline confusion data rather than pre-declared.",
+    "convention": "tools is a list of 11 description strings."
+  },
+  "tools": [
+    "a tool that fetches the abstract of a PubMed paper given its PMID",
+    "a tool that searches biomedical articles related to a disease name",
+    "a tool that gets known side effects of a drug given the drug name",
+    "a tool that converts a gene symbol to its Ensembl gene ID",
+    "a tool that retrieves protein tissue expression information given a gene name",
+    "a tool that finds similar molecules given a SMILES string",
+    "a tool that predicts ADMET properties of a molecule given its SMILES string",
+    "a tool that calculates the Tanimoto similarity between two molecules given their SMILES strings",
+    "a tool that ranks candidate drug compounds by combining their predicted binding affinity, toxicity risk, and blood-brain barrier penetration score",
+    "a tool that ranks possible therapeutic targets for a disease based on genetic evidence, tissue expression, druggability, and literature support",
+    "a tool that retrieves protein 3D structure given a PDB ID"
+  ]
+}

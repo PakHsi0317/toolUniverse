@@ -1,0 +1,7 @@
+[
+  "Can you compare the structural similarity of caffeine and theobromine using their SMILES representations?",
+  "Dr. Lee is investigating two compounds, and she needs to know how similar they are: one is represented by 'CC(=O)OC1=CC=CC=C1C(=C)C(=O)O' and the other by 'CC(=O)OC1=CC=CC=C1C(=C)C(=O)N'.",
+  "I want to check if the SMILES for ibuprofen and naproxen show any significant similarity.",
+  "What is the Tanimoto similarity between the SMILES strings 'C1=CC=CC=C1' and 'C1=CC=CC=C1C(=O)O'?",
+  "Can you help me understand how structurally similar morphine and codeine are based on their chemical structures?"
+]
