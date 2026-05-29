@@ -16,6 +16,51 @@
   },
   {
     "tool_name": "compute_tanimoto_similarity",
+    "scenario": "wrong_param_name_only",
+    "bugs": [
+      "wrong_param_name"
+    ],
+    "clean_acc": 0.6,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": -0.4,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "compute_tanimoto_similarity",
+    "scenario": "misleading_description",
+    "bugs": [
+      "misleading_description"
+    ],
+    "clean_acc": 0.6,
+    "degraded_acc": 0.6,
+    "recovered_acc": 0.6,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "max_iterations (3)"
+  },
+  {
+    "tool_name": "compute_tanimoto_similarity",
+    "scenario": "add_fake_required_param",
+    "bugs": [
+      "add_fake_required_param"
+    ],
+    "clean_acc": 0.6,
+    "degraded_acc": 0.6,
+    "recovered_acc": 0.6,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 2,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "compute_tanimoto_similarity",
     "scenario": "wrong_type_plus_empty",
     "bugs": [
       "wrong_type",
@@ -29,6 +74,22 @@
     "recovery_rate": 0.0,
     "iterations_run": 1,
     "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "compute_tanimoto_similarity",
+    "scenario": "wrong_type_plus_misleading",
+    "bugs": [
+      "wrong_type",
+      "misleading_description"
+    ],
+    "clean_acc": 0.6,
+    "degraded_acc": 0.6,
+    "recovered_acc": 0.8,
+    "damage": 0.0,
+    "recovery": 0.20000000000000007,
+    "recovery_rate": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "max_iterations (3)"
   },
   {
     "tool_name": "convert_gene_symbol_to_ensembl_id",
@@ -47,10 +108,71 @@
   },
   {
     "tool_name": "convert_gene_symbol_to_ensembl_id",
+    "scenario": "wrong_param_name_only",
+    "bugs": [
+      "wrong_param_name"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "convert_gene_symbol_to_ensembl_id",
+    "scenario": "misleading_description",
+    "bugs": [
+      "misleading_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "convert_gene_symbol_to_ensembl_id",
+    "scenario": "add_fake_required_param",
+    "bugs": [
+      "add_fake_required_param"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "convert_gene_symbol_to_ensembl_id",
     "scenario": "wrong_type_plus_empty",
     "bugs": [
       "wrong_type",
       "empty_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 0.0,
+    "recovered_acc": 1.0,
+    "damage": 1.0,
+    "recovery": 1.0,
+    "recovery_rate": 1.0,
+    "iterations_run": 2,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "convert_gene_symbol_to_ensembl_id",
+    "scenario": "wrong_type_plus_misleading",
+    "bugs": [
+      "wrong_type",
+      "misleading_description"
     ],
     "clean_acc": 1.0,
     "degraded_acc": 0.0,
@@ -78,6 +200,51 @@
   },
   {
     "tool_name": "fetch_pubmed_abstract",
+    "scenario": "wrong_param_name_only",
+    "bugs": [
+      "wrong_param_name"
+    ],
+    "clean_acc": 0.8,
+    "degraded_acc": 0.8,
+    "recovered_acc": 0.8,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "fetch_pubmed_abstract",
+    "scenario": "misleading_description",
+    "bugs": [
+      "misleading_description"
+    ],
+    "clean_acc": 0.8,
+    "degraded_acc": 0.8,
+    "recovered_acc": 0.8,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "fetch_pubmed_abstract",
+    "scenario": "add_fake_required_param",
+    "bugs": [
+      "add_fake_required_param"
+    ],
+    "clean_acc": 0.8,
+    "degraded_acc": 0.8,
+    "recovered_acc": 0.8,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "fetch_pubmed_abstract",
     "scenario": "wrong_type_plus_empty",
     "bugs": [
       "wrong_type",
@@ -93,6 +260,22 @@
     "terminated_reason": "max_iterations (3)"
   },
   {
+    "tool_name": "fetch_pubmed_abstract",
+    "scenario": "wrong_type_plus_misleading",
+    "bugs": [
+      "wrong_type",
+      "misleading_description"
+    ],
+    "clean_acc": 0.8,
+    "degraded_acc": 1.0,
+    "recovered_acc": 0.8,
+    "damage": -0.19999999999999996,
+    "recovery": -0.19999999999999996,
+    "recovery_rate": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
     "tool_name": "find_similar_molecules",
     "scenario": "wrong_type_only",
     "bugs": [
@@ -109,10 +292,71 @@
   },
   {
     "tool_name": "find_similar_molecules",
+    "scenario": "wrong_param_name_only",
+    "bugs": [
+      "wrong_param_name"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "find_similar_molecules",
+    "scenario": "misleading_description",
+    "bugs": [
+      "misleading_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "find_similar_molecules",
+    "scenario": "add_fake_required_param",
+    "bugs": [
+      "add_fake_required_param"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "find_similar_molecules",
     "scenario": "wrong_type_plus_empty",
     "bugs": [
       "wrong_type",
       "empty_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "find_similar_molecules",
+    "scenario": "wrong_type_plus_misleading",
+    "bugs": [
+      "wrong_type",
+      "misleading_description"
     ],
     "clean_acc": 1.0,
     "degraded_acc": 1.0,
@@ -140,10 +384,71 @@
   },
   {
     "tool_name": "get_drug_side_effects",
+    "scenario": "wrong_param_name_only",
+    "bugs": [
+      "wrong_param_name"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "get_drug_side_effects",
+    "scenario": "misleading_description",
+    "bugs": [
+      "misleading_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "get_drug_side_effects",
+    "scenario": "add_fake_required_param",
+    "bugs": [
+      "add_fake_required_param"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "get_drug_side_effects",
     "scenario": "wrong_type_plus_empty",
     "bugs": [
       "wrong_type",
       "empty_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 0.0,
+    "recovered_acc": 1.0,
+    "damage": 1.0,
+    "recovery": 1.0,
+    "recovery_rate": 1.0,
+    "iterations_run": 2,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "get_drug_side_effects",
+    "scenario": "wrong_type_plus_misleading",
+    "bugs": [
+      "wrong_type",
+      "misleading_description"
     ],
     "clean_acc": 1.0,
     "degraded_acc": 0.0,
@@ -171,6 +476,51 @@
   },
   {
     "tool_name": "get_pdb_structure",
+    "scenario": "wrong_param_name_only",
+    "bugs": [
+      "wrong_param_name"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "get_pdb_structure",
+    "scenario": "misleading_description",
+    "bugs": [
+      "misleading_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 2,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "get_pdb_structure",
+    "scenario": "add_fake_required_param",
+    "bugs": [
+      "add_fake_required_param"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "get_pdb_structure",
     "scenario": "wrong_type_plus_empty",
     "bugs": [
       "wrong_type",
@@ -184,6 +534,22 @@
     "recovery_rate": 0.0,
     "iterations_run": 1,
     "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "get_pdb_structure",
+    "scenario": "wrong_type_plus_misleading",
+    "bugs": [
+      "wrong_type",
+      "misleading_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "max_iterations (3)"
   },
   {
     "tool_name": "get_protein_tissue_expression",
@@ -198,6 +564,51 @@
     "recovery": 1.0,
     "recovery_rate": 1.0,
     "iterations_run": 2,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "get_protein_tissue_expression",
+    "scenario": "wrong_param_name_only",
+    "bugs": [
+      "wrong_param_name"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "get_protein_tissue_expression",
+    "scenario": "misleading_description",
+    "bugs": [
+      "misleading_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "get_protein_tissue_expression",
+    "scenario": "add_fake_required_param",
+    "bugs": [
+      "add_fake_required_param"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
     "terminated_reason": "target_reached (100%)"
   },
   {
@@ -217,6 +628,22 @@
     "terminated_reason": "target_reached (100%)"
   },
   {
+    "tool_name": "get_protein_tissue_expression",
+    "scenario": "wrong_type_plus_misleading",
+    "bugs": [
+      "wrong_type",
+      "misleading_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 0.2,
+    "recovered_acc": 1.0,
+    "damage": 0.8,
+    "recovery": 0.8,
+    "recovery_rate": 1.0,
+    "iterations_run": 2,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
     "tool_name": "predict_admet_properties",
     "scenario": "wrong_type_only",
     "bugs": [
@@ -233,6 +660,51 @@
   },
   {
     "tool_name": "predict_admet_properties",
+    "scenario": "wrong_param_name_only",
+    "bugs": [
+      "wrong_param_name"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "predict_admet_properties",
+    "scenario": "misleading_description",
+    "bugs": [
+      "misleading_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "predict_admet_properties",
+    "scenario": "add_fake_required_param",
+    "bugs": [
+      "add_fake_required_param"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 2,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "predict_admet_properties",
     "scenario": "wrong_type_plus_empty",
     "bugs": [
       "wrong_type",
@@ -242,6 +714,22 @@
     "degraded_acc": 1.0,
     "recovered_acc": 1.0,
     "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "predict_admet_properties",
+    "scenario": "wrong_type_plus_misleading",
+    "bugs": [
+      "wrong_type",
+      "misleading_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 0.4,
+    "recovered_acc": 0.4,
+    "damage": 0.6,
     "recovery": 0.0,
     "recovery_rate": 0.0,
     "iterations_run": 1,
@@ -264,10 +752,71 @@
   },
   {
     "tool_name": "rank_drug_compounds",
+    "scenario": "wrong_param_name_only",
+    "bugs": [
+      "wrong_param_name"
+    ],
+    "clean_acc": 0.4,
+    "degraded_acc": 0.4,
+    "recovered_acc": 0.4,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "max_iterations (3)"
+  },
+  {
+    "tool_name": "rank_drug_compounds",
+    "scenario": "misleading_description",
+    "bugs": [
+      "misleading_description"
+    ],
+    "clean_acc": 0.4,
+    "degraded_acc": 0.4,
+    "recovered_acc": 0.4,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "max_iterations (3)"
+  },
+  {
+    "tool_name": "rank_drug_compounds",
+    "scenario": "add_fake_required_param",
+    "bugs": [
+      "add_fake_required_param"
+    ],
+    "clean_acc": 0.4,
+    "degraded_acc": 0.4,
+    "recovered_acc": 0.2,
+    "damage": 0.0,
+    "recovery": -0.2,
+    "recovery_rate": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "max_iterations (3)"
+  },
+  {
+    "tool_name": "rank_drug_compounds",
     "scenario": "wrong_type_plus_empty",
     "bugs": [
       "wrong_type",
       "empty_description"
+    ],
+    "clean_acc": 0.4,
+    "degraded_acc": 0.4,
+    "recovered_acc": 0.4,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "max_iterations (3)"
+  },
+  {
+    "tool_name": "rank_drug_compounds",
+    "scenario": "wrong_type_plus_misleading",
+    "bugs": [
+      "wrong_type",
+      "misleading_description"
     ],
     "clean_acc": 0.4,
     "degraded_acc": 0.4,
@@ -295,6 +844,51 @@
   },
   {
     "tool_name": "rank_therapeutic_targets",
+    "scenario": "wrong_param_name_only",
+    "bugs": [
+      "wrong_param_name"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "rank_therapeutic_targets",
+    "scenario": "misleading_description",
+    "bugs": [
+      "misleading_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 3,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "rank_therapeutic_targets",
+    "scenario": "add_fake_required_param",
+    "bugs": [
+      "add_fake_required_param"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "rank_therapeutic_targets",
     "scenario": "wrong_type_plus_empty",
     "bugs": [
       "wrong_type",
@@ -307,6 +901,22 @@
     "recovery": 1.0,
     "recovery_rate": 1.0,
     "iterations_run": 2,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "rank_therapeutic_targets",
+    "scenario": "wrong_type_plus_misleading",
+    "bugs": [
+      "wrong_type",
+      "misleading_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 0.0,
+    "recovered_acc": 1.0,
+    "damage": 1.0,
+    "recovery": 1.0,
+    "recovery_rate": 1.0,
+    "iterations_run": 3,
     "terminated_reason": "target_reached (100%)"
   },
   {
@@ -326,10 +936,71 @@
   },
   {
     "tool_name": "search_biomedical_articles",
+    "scenario": "wrong_param_name_only",
+    "bugs": [
+      "wrong_param_name"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "search_biomedical_articles",
+    "scenario": "misleading_description",
+    "bugs": [
+      "misleading_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "search_biomedical_articles",
+    "scenario": "add_fake_required_param",
+    "bugs": [
+      "add_fake_required_param"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 1.0,
+    "recovered_acc": 1.0,
+    "damage": 0.0,
+    "recovery": 0.0,
+    "recovery_rate": 0.0,
+    "iterations_run": 1,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "search_biomedical_articles",
     "scenario": "wrong_type_plus_empty",
     "bugs": [
       "wrong_type",
       "empty_description"
+    ],
+    "clean_acc": 1.0,
+    "degraded_acc": 0.0,
+    "recovered_acc": 1.0,
+    "damage": 1.0,
+    "recovery": 1.0,
+    "recovery_rate": 1.0,
+    "iterations_run": 2,
+    "terminated_reason": "target_reached (100%)"
+  },
+  {
+    "tool_name": "search_biomedical_articles",
+    "scenario": "wrong_type_plus_misleading",
+    "bugs": [
+      "wrong_type",
+      "misleading_description"
     ],
     "clean_acc": 1.0,
     "degraded_acc": 0.0,
