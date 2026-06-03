@@ -1,0 +1,46 @@
+{
+  "name": "get_protein_tissue_expression",
+  "description": "Retrieve protein tissue expression information based on a given gene name. Use this tool when you need to find out where a specific protein is expressed in different tissues. Do NOT use this tool for retrieving general protein information or sequence data; for that, use 'get_uniprot_protein_info'.",
+  "parameters": [
+    {
+      "name": "gene_name",
+      "type": "integer",
+      "description": "The official gene symbol for the protein of interest, following standard nomenclature (e.g. 'TP53'). Must be a valid gene name recognized in the relevant databases.",
+      "required": true
+    },
+    {
+      "name": "include_normal_tissues",
+      "type": "boolean",
+      "description": "Whether to include expression data from normal tissues. Set to true to get a comprehensive view of expression across normal tissues. Defaults to true.",
+      "required": false
+    },
+    {
+      "name": "include_disease_tissues",
+      "type": "boolean",
+      "description": "Whether to include expression data from diseased tissues. Set to true to include this data. Defaults to false.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "gene_name": {
+        "type": "string",
+        "description": "The gene name provided in the request, confirming the target protein."
+      },
+      "tissue_expression": {
+        "type": "array",
+        "description": "List of tissues with corresponding expression levels. Each item includes: tissue_name (string), expression_level (number, scaled 0-100)."
+      },
+      "normal_tissues_included": {
+        "type": "boolean",
+        "description": "Indicates if normal tissue expression data was included in the response."
+      },
+      "disease_tissues_included": {
+        "type": "boolean",
+        "description": "Indicates if disease tissue expression data was included in the response."
+      }
+    },
+    "description": "Object containing the gene name, tissue expression data, and flags indicating which types of tissues were included."
+  }
+}

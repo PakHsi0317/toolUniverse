@@ -1,0 +1,28 @@
+[
+  {
+    "prompt": "Can you tell me where the BRCA1 protein is expressed in normal tissues?",
+    "salient_values": [
+      "BRCA1"
+    ]
+  },
+  {
+    "prompt": "Dr. Johnson is researching the gene associated with cystic fibrosis; he needs to know its protein expression in various tissues.",
+    "salient_values": []
+  },
+  {
+    "prompt": "I want to find out the tissue expression levels for TP53, including data from diseased tissues.",
+    "salient_values": [
+      "TP53"
+    ]
+  },
+  {
+    "prompt": "What tissues express the protein linked to Huntington's disease?",
+    "salient_values": []
+  },
+  {
+    "prompt": "Please provide the tissue expression information for the gene symbol MYC, focusing on normal tissues.",
+    "salient_values": [
+      "MYC"
+    ]
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "name": "rank_candidate_drug_compounds",
+  "description": "Use this tool to rank candidate drug compounds based on their predicted binding affinity, toxicity risk, and blood-brain barrier penetration score. Do not use this tool if you only need to evaluate a single compound or if you require detailed molecular dynamics simulations, as this tool focuses on ranking rather than detailed analysis.",
+  "parameters": [
+    {
+      "name": "binding_affinities",
+      "type": "array",
+      "description": "An array of predicted binding affinity values for the candidate compounds, measured in nanomolar (nM). Each value should be a positive number.",
+      "required": true
+    },
+    {
+      "name": "toxicity_risks",
+      "type": "array",
+      "description": "An array of toxicity risk scores for the candidate compounds, where each score is a number between 0 (no risk) and 1 (high risk).",
+      "required": true
+    },
+    {
+      "name": "bb_penetration_scores",
+      "type": "array",
+      "description": "An array of blood-brain barrier penetration scores for the candidate compounds, where each score is a number between 0 (no penetration) and 1 (high penetration).",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "ranked_compounds": {
+        "type": "array",
+        "description": "An array of objects representing the ranked candidate compounds.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "compound_id": {
+              "type": "string",
+              "description": "A unique identifier for the compound."
+            },
+            "rank": {
+              "type": "integer",
+              "description": "The rank of the compound in the list, starting from 1 for the highest-ranked compound."
+            },
+            "binding_affinity": {
+              "type": "number",
+              "description": "The predicted binding affinity of the compound in nanomolar (nM)."
+            },
+            "toxicity_risk": {
+              "type": "number",
+              "description": "The toxicity risk score of the compound, between 0 and 1."
+            },
+            "bb_penetration_score": {
+              "type": "number",
+              "description": "The blood-brain barrier penetration score of the compound, between 0 and 1."
+            }
+          },
+          "required": [
+            "compound_id",
+            "rank",
+            "binding_affinity",
+            "toxicity_risk",
+            "bb_penetration_score"
+          ]
+        }
+      }
+    },
+    "description": "A ranked list of candidate drug compounds based on the provided scores."
+  }
+}

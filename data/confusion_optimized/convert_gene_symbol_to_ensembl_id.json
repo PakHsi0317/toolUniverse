@@ -1,0 +1,30 @@
+{
+  "name": "convert_gene_symbol_to_ensembl_id",
+  "description": "Convert a gene symbol to its corresponding Ensembl gene ID. Use this tool when you have a specific gene symbol (e.g. 'TP53') and need to find its Ensembl ID. Do NOT use this tool for non-standard gene symbols or for retrieving information about multiple genes at once; for batch queries, consider using 'convert_multiple_gene_symbols'.",
+  "parameters": [
+    {
+      "name": "gene_symbol",
+      "type": "string",
+      "description": "The official gene symbol for which to retrieve the Ensembl gene ID. Must be a valid gene symbol recognized by Ensembl (e.g. 'TP53'). Case-insensitive.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "gene_symbol": {
+        "type": "string",
+        "description": "The input gene symbol (echoes input, case-insensitive)."
+      },
+      "ensembl_id": {
+        "type": "string",
+        "description": "The corresponding Ensembl gene ID (e.g. 'ENSG00000141510')."
+      },
+      "status": {
+        "type": "string",
+        "description": "Status of the conversion, indicating success or failure (e.g. 'success', 'not_found')."
+      }
+    },
+    "description": "Object containing the input gene symbol, the corresponding Ensembl gene ID, and the status of the conversion."
+  }
+}

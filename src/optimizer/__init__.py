@@ -10,12 +10,18 @@ Components:
 """
 
 from .failure_diagnoser import DiagnosisResult, FailureDiagnoser
-from .invocation_tester import InvocationResult, InvocationTester
+from .invocation_tester import (
+    CallDimensions,
+    InvocationResult,
+    InvocationTester,
+    diagnose_dimensions,
+)
 from .loop import IterationResult, OptimizationResult, OptimizerLoop
 from .spec_rewriter import SpecRewriter
-from .test_prompt_generator import TestPromptGenerator
+from .test_prompt_generator import PromptWithGroundTruth, TestPromptGenerator
 
 __all__ = [
+    "CallDimensions",
     "DiagnosisResult",
     "FailureDiagnoser",
     "InvocationResult",
@@ -23,6 +29,8 @@ __all__ = [
     "IterationResult",
     "OptimizationResult",
     "OptimizerLoop",
+    "PromptWithGroundTruth",
     "SpecRewriter",
     "TestPromptGenerator",
+    "diagnose_dimensions",
 ]

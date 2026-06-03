@@ -1,0 +1,22 @@
+{
+  "name": "get_gene_info",
+  "description": "Get information about a gene given its symbol. Returns details about the gene. Use this tool when you need gene information.",
+  "parameters": [
+    {
+      "name": "gene_symbol",
+      "type": "string",
+      "description": "The gene symbol to look up.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "info": {
+        "type": "object",
+        "description": "Details about the gene including identifiers and annotations."
+      }
+    },
+    "description": "Object containing gene information."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "convert_code",
+  "description": "Convert one code format to another (e.g. from hexadecimal to decimal, or from binary to decimal). Use this tool when you need to transform a specific code representation into another format. Do NOT use this tool for general-purpose encoding/decoding tasks (e.g. base64 encoding) — use 'encode_decode_code' for that.",
+  "parameters": [
+    {
+      "name": "input_code",
+      "type": "string",
+      "description": "The code to be converted, represented as a string. Must be in the format appropriate for the specified conversion (e.g. hexadecimal should only contain characters 0-9 and A-F). Length must be between 1 and 20 characters.",
+      "required": true
+    },
+    {
+      "name": "from_format",
+      "type": "string",
+      "description": "The format of the input code. Must be one of: 'hexadecimal', 'binary', 'decimal'. This specifies the current representation of the input_code.",
+      "required": true
+    },
+    {
+      "name": "to_format",
+      "type": "string",
+      "description": "The desired output format for the conversion. Must be one of: 'hexadecimal', 'binary', 'decimal'. This specifies the target representation of the output code.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "converted_code": {
+        "type": "string",
+        "description": "The converted code in the target format (to_format)."
+      }
+    },
+    "description": "Object containing the converted code in the specified output format."
+  }
+}

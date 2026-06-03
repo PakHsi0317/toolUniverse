@@ -1,0 +1,32 @@
+[
+  {
+    "prompt": "Can you retrieve the 3D structure for the protein with the PDB ID 1HVR?",
+    "salient_values": [
+      "1HVR"
+    ]
+  },
+  {
+    "prompt": "I'm looking for the atomic coordinates of the protein identified by 7A4N.",
+    "salient_values": [
+      "7A4N"
+    ]
+  },
+  {
+    "prompt": "Dr. Lee needs the structural data for the protein associated with the PDB ID 4HHB, including atomic coordinates.",
+    "salient_values": [
+      "4HHB"
+    ]
+  },
+  {
+    "prompt": "Please get me the metadata for the protein structure corresponding to the PDB ID 2B3P.",
+    "salient_values": [
+      "2B3P"
+    ]
+  },
+  {
+    "prompt": "What is the 3D structure of the protein with PDB ID 3D8E?",
+    "salient_values": [
+      "3D8E"
+    ]
+  }
+]

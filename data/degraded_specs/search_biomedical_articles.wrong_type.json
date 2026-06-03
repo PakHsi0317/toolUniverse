@@ -1,0 +1,38 @@
+{
+  "name": "search_biomedical_articles",
+  "description": "Search for biomedical articles related to a specific disease name in a literature database. Returns a ranked list of article metadata including title, authors, journal, publication year, and abstract. Use this tool when the user requests information on biomedical literature related to a disease. Do NOT use for non-biomedical topics or general literature searches; for those, consider using a general search tool.",
+  "parameters": [
+    {
+      "name": "disease_name",
+      "type": "integer",
+      "description": "The name of the disease to search for in the literature. Should be a complete disease name or term, e.g., 'diabetes mellitus'.",
+      "required": true
+    },
+    {
+      "name": "max_results",
+      "type": "integer",
+      "description": "Maximum number of articles to return, ranked by relevance. Must be between 1 and 100. Defaults to 20 if not specified.",
+      "required": false
+    },
+    {
+      "name": "min_year",
+      "type": "integer",
+      "description": "Earliest publication year to include (inclusive), as a 4-digit year e.g. 2020. Articles published before this year are excluded. Omit to include all years.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "articles": {
+        "type": "array",
+        "description": "List of matching articles, ranked by relevance. Each item has: title (string), authors (array of strings), journal (string), year (integer), abstract (string)."
+      },
+      "total_count": {
+        "type": "integer",
+        "description": "Total number of matches in the database, which may exceed max_results."
+      }
+    },
+    "description": "Object containing 'articles' (list of metadata) and 'total_count' (total matches before truncation)."
+  }
+}

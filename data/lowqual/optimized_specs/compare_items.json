@@ -1,0 +1,38 @@
+{
+  "name": "compare_items",
+  "description": "Compares two items, such as medications or treatments, and returns a numerical score indicating their similarity or difference in effectiveness. Use this tool when you need to quantify the relationship between two specific items (e.g., comparing the effectiveness of atorvastatin and simvastatin in lowering LDL cholesterol). Do NOT use this tool for qualitative assessments or when the items are not directly comparable.",
+  "parameters": [
+    {
+      "name": "item_one",
+      "type": "string",
+      "description": "The first item to compare, represented as a string. This could be a description, name, or any relevant identifier. Must not be empty.",
+      "required": true
+    },
+    {
+      "name": "item_two",
+      "type": "string",
+      "description": "The second item to compare against the first item, also represented as a string. Must not be empty and should be of the same type as item_one.",
+      "required": true
+    },
+    {
+      "name": "comparison_type",
+      "type": "string",
+      "description": "The type of comparison to perform. Must be one of: 'similarity', 'difference'. This determines the scoring method used. Defaults to 'similarity' if not specified.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "score": {
+        "type": "number",
+        "description": "Numerical score representing the result of the comparison. Higher scores indicate greater similarity (for 'similarity') or greater difference (for 'difference')."
+      },
+      "comparison_details": {
+        "type": "string",
+        "description": "A brief description of the comparison result, providing context to the score."
+      }
+    },
+    "description": "Object containing the comparison score and details about the comparison."
+  }
+}

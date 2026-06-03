@@ -1,0 +1,30 @@
+{
+  "name": "fetch_pubmed_abstract",
+  "description": "Use this tool to retrieve the abstract of a PubMed paper when you have the PMID (PubMed Identifier) of the paper. Do not use this tool if you do not have a valid PMID or if you are looking for other types of information (e.g., full text, author details).",
+  "parameters": [
+    {
+      "name": "pmid",
+      "type": "string",
+      "description": "The PubMed Identifier for the paper. It must be a valid numeric string, typically 8 digits long.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "abstract": {
+        "type": "string",
+        "description": "The abstract text of the PubMed paper."
+      },
+      "title": {
+        "type": "string",
+        "description": "The title of the PubMed paper."
+      },
+      "pmid": {
+        "type": "string",
+        "description": "The PubMed Identifier of the paper."
+      }
+    },
+    "description": "The response containing the abstract of the requested PubMed paper."
+  }
+}

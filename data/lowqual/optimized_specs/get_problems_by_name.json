@@ -1,0 +1,38 @@
+{
+  "name": "get_problems_by_name",
+  "description": "Retrieve a list of problems associated with a specified item by its name, including drugs and their side effects. Use this tool when you need to find issues or challenges related to a specific entity (e.g., a product, service, drug, or concept). Do NOT use this tool for general inquiries or unrelated topics; for broader searches, consider using 'search_general_issues'.",
+  "parameters": [
+    {
+      "name": "item_name",
+      "type": "string",
+      "description": "The name of the item for which to retrieve associated problems. Must be a non-empty string, with a maximum length of 255 characters.",
+      "required": true
+    },
+    {
+      "name": "include_details",
+      "type": "boolean",
+      "description": "Whether to include detailed descriptions of each problem. Set to false to receive only problem titles for a concise response. Defaults to true.",
+      "required": false
+    },
+    {
+      "name": "max_results",
+      "type": "integer",
+      "description": "Maximum number of problems to return. Must be between 1 and 100. Defaults to 10 if not specified.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "problems": {
+        "type": "array",
+        "description": "List of problems associated with the specified item. Each item includes: title (string), and optionally description (string) if include_details is true."
+      },
+      "total_count": {
+        "type": "integer",
+        "description": "Total number of problems found for the specified item, which may exceed max_results."
+      }
+    },
+    "description": "Object containing a list of problems and the total count of problems found."
+  }
+}

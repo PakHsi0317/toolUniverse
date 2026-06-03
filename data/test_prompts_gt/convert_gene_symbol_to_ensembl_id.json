@@ -1,0 +1,26 @@
+[
+  {
+    "prompt": "Can you find the Ensembl ID for the gene associated with breast cancer susceptibility?",
+    "salient_values": []
+  },
+  {
+    "prompt": "I need the Ensembl gene ID for TP53 to include in my research paper.",
+    "salient_values": [
+      "TP53"
+    ]
+  },
+  {
+    "prompt": "Dr. Johnson is looking for the Ensembl ID of the gene linked to cystic fibrosis.",
+    "salient_values": []
+  },
+  {
+    "prompt": "What is the Ensembl ID for the gene symbol BRCA1?",
+    "salient_values": [
+      "BRCA1"
+    ]
+  },
+  {
+    "prompt": "Please convert the gene symbol that is involved in Li-Fraumeni syndrome to its Ensembl ID.",
+    "salient_values": []
+  }
+]

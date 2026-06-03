@@ -1,0 +1,50 @@
+{
+  "name": "rank_therapeutic_targets",
+  "description": "Rank potential therapeutic targets for a specified disease based on genetic evidence, tissue expression, druggability, and literature support. Use this tool when you need to evaluate and prioritize targets for drug development or research. Do NOT use this tool for general disease information or non-target-related queries; for those, consider using a disease database search tool.",
+  "parameters": [
+    {
+      "name": "disease_name",
+      "type": "string",
+      "description": "The name of the disease for which therapeutic targets are being ranked. Should be a common name or recognized medical term (e.g., 'breast cancer').",
+      "required": true
+    },
+    {
+      "name": "genetic_evidence_score",
+      "type": "number",
+      "description": "Score representing the strength of genetic evidence supporting each target, on a scale from 0.0 (no evidence) to 1.0 (strong evidence). Defaults to 0.5 if not specified.",
+      "required": false
+    },
+    {
+      "name": "tissue_expression_level",
+      "type": "number",
+      "description": "Minimum tissue expression level required for a target to be considered, on a scale from 0.0 (no expression) to 1.0 (high expression). Defaults to 0.1 if not specified.",
+      "required": false
+    },
+    {
+      "name": "druggability_score",
+      "type": "number",
+      "description": "Score indicating the druggability of the target, on a scale from 0.0 (not druggable) to 1.0 (highly druggable). Defaults to 0.5 if not specified.",
+      "required": false
+    },
+    {
+      "name": "literature_support_threshold",
+      "type": "integer",
+      "description": "Minimum number of supporting literature references required for a target to be included in the ranking. Must be a positive integer. Defaults to 5 if not specified.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "ranked_targets": {
+        "type": "array",
+        "description": "List of therapeutic targets ranked by their overall score. Each item includes: target_name (string), score (number), and supporting_evidence (object with details)."
+      },
+      "total_count": {
+        "type": "integer",
+        "description": "Total number of targets evaluated for the specified disease."
+      }
+    },
+    "description": "Object containing a ranked list of therapeutic targets and the total count of evaluated targets."
+  }
+}

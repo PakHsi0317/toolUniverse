@@ -1,0 +1,29 @@
+{
+  "name": "get_drug_side_effects",
+  "description": "Use this tool to retrieve known side effects of a specified drug by its name. This tool is appropriate when you need detailed information about the adverse effects associated with a particular medication. Do not use this tool for drugs that are not approved or for which side effects are not well-documented. For general drug information, consider using a different tool that provides broader drug profiles.",
+  "parameters": [
+    {
+      "name": "drug_name",
+      "type": "string",
+      "description": "The name of the drug for which to retrieve side effects. Must be a valid drug name as recognized in medical databases.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug for which side effects are provided."
+      },
+      "side_effects": {
+        "type": "array",
+        "description": "A list of known side effects associated with the drug.",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "description": "A list of known side effects for the specified drug."
+  }
+}

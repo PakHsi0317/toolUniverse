@@ -1,0 +1,34 @@
+{
+  "name": "retrieve_protein_structure",
+  "description": "Use this tool to retrieve the 3D structure of a protein given its PDB ID. This tool is appropriate when you need structural data for a specific protein for analysis or visualization. Do not use this tool if you do not have a valid PDB ID or if you are looking for protein sequence data instead; consider using a sequence retrieval tool in that case.",
+  "parameters": [
+    {
+      "name": "pdb_id",
+      "type": "string",
+      "description": "The Protein Data Bank ID for the protein structure. Must be a 4-character alphanumeric string (e.g., '1A2B').",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "structure_data": {
+        "type": "string",
+        "description": "The 3D structure data in a suitable format (e.g., PDB format)."
+      },
+      "pdb_id": {
+        "type": "string",
+        "description": "The PDB ID of the retrieved structure."
+      },
+      "status": {
+        "type": "string",
+        "description": "Status of the retrieval operation (e.g., 'success' or 'error')."
+      },
+      "error_message": {
+        "type": "string",
+        "description": "An error message if the retrieval fails, otherwise null."
+      }
+    },
+    "description": "Returns the 3D structure data of the protein."
+  }
+}

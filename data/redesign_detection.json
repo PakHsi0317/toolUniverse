@@ -1,0 +1,48 @@
+{
+  "structural_flagged": "3/5",
+  "control_false_positives": "0/1",
+  "per_tool": [
+    {
+      "tool_name": "compare_items",
+      "kind": "lowqual",
+      "held_out_accuracy": 0.2,
+      "needs_redesign": true,
+      "terminated_reason": "needs_redesign (self-test 100% but held-out 20%; tool scope only fits its own prompts)"
+    },
+    {
+      "tool_name": "convert_code",
+      "kind": "lowqual",
+      "held_out_accuracy": 1.0,
+      "needs_redesign": false,
+      "terminated_reason": "target_reached (100%)"
+    },
+    {
+      "tool_name": "get_paper_text_by_id",
+      "kind": "lowqual",
+      "held_out_accuracy": 0.8,
+      "needs_redesign": true,
+      "terminated_reason": "needs_redesign (field-level fix to 'description' cannot lift held-out 80%; structural defect)"
+    },
+    {
+      "tool_name": "get_problems_by_name",
+      "kind": "lowqual",
+      "held_out_accuracy": 0.2,
+      "needs_redesign": true,
+      "terminated_reason": "needs_redesign (no field-level fix lifted held-out 20% over 3 rounds; structural defect)"
+    },
+    {
+      "tool_name": "lookup_structure_by_id",
+      "kind": "lowqual",
+      "held_out_accuracy": 1.0,
+      "needs_redesign": false,
+      "terminated_reason": "target_reached (100%)"
+    },
+    {
+      "tool_name": "get_pdb_structure",
+      "kind": "healthy_control",
+      "held_out_accuracy": 1.0,
+      "needs_redesign": false,
+      "terminated_reason": "target_reached (100%)"
+    }
+  ]
+}

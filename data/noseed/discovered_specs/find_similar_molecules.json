@@ -1,0 +1,45 @@
+{
+  "name": "find_similar_molecules",
+  "description": "Use this tool to find molecules that are structurally similar to a given SMILES string. This tool is appropriate when you have a specific SMILES representation of a molecule and want to explore similar compounds. Do not use this tool if you do not have a valid SMILES string or if you are looking for similarity based on other properties (e.g., biological activity) rather than structural similarity.",
+  "parameters": [
+    {
+      "name": "smiles_string",
+      "type": "string",
+      "description": "The SMILES representation of the molecule for which similar molecules are to be found. Must be a valid SMILES string.",
+      "required": true
+    },
+    {
+      "name": "max_results",
+      "type": "integer",
+      "description": "The maximum number of similar molecules to return. Must be a positive integer. Default is 10.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "similar_molecules": {
+        "type": "array",
+        "description": "An array of objects representing similar molecules.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "smiles": {
+              "type": "string",
+              "description": "The SMILES representation of the similar molecule."
+            },
+            "similarity_score": {
+              "type": "number",
+              "description": "A score representing the structural similarity to the input molecule, where 1.0 is identical."
+            }
+          },
+          "required": [
+            "smiles",
+            "similarity_score"
+          ]
+        }
+      }
+    },
+    "description": "A list of similar molecules along with their SMILES representations and similarity scores."
+  }
+}

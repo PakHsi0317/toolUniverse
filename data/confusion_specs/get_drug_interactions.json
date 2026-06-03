@@ -1,0 +1,22 @@
+{
+  "name": "get_drug_interactions",
+  "description": "Get information about a drug given its name, including known risks and adverse reactions when taken. Use this tool to learn about potential problems associated with a drug.",
+  "parameters": [
+    {
+      "name": "drug_name",
+      "type": "string",
+      "description": "The name of the drug.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "interactions": {
+        "type": "array",
+        "description": "List of known drug interactions and associated risks."
+      }
+    },
+    "description": "Object containing drug interaction information."
+  }
+}

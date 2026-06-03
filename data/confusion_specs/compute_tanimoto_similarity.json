@@ -1,0 +1,28 @@
+{
+  "name": "compute_tanimoto_similarity",
+  "description": "Calculate the Tanimoto similarity coefficient between two molecules based on their SMILES (Simplified Molecular Input Line Entry System) representations. Use this tool when you need to compare the structural similarity of two chemical compounds. Do NOT use this tool for non-chemical structures or for comparing more than two molecules at once; for that, consider using a different similarity metric or tool.",
+  "parameters": [
+    {
+      "name": "smiles_1",
+      "type": "string",
+      "description": "The SMILES representation of the first molecule. Must be a valid SMILES string, which encodes the structure of the molecule. There are no specific length restrictions, but it should be a well-formed SMILES.",
+      "required": true
+    },
+    {
+      "name": "smiles_2",
+      "type": "string",
+      "description": "The SMILES representation of the second molecule. Must also be a valid SMILES string. It should be a well-formed SMILES and represent a different molecule than smiles_1.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "tanimoto_similarity": {
+        "type": "number",
+        "description": "The Tanimoto similarity coefficient between the two molecules, ranging from 0.0 (no similarity) to 1.0 (identical structures)."
+      }
+    },
+    "description": "Object containing the Tanimoto similarity coefficient between the two provided molecules."
+  }
+}

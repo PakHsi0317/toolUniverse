@@ -1,0 +1,32 @@
+[
+  {
+    "prompt": "Could you analyze the absorption and distribution properties of the molecule represented by the SMILES string 'CC(=O)O'?",
+    "salient_values": [
+      "CC(=O)O"
+    ]
+  },
+  {
+    "prompt": "Dr. Lee is investigating a compound with the SMILES 'C1=CC=CC=C1' and wants to know its metabolism and excretion rates.",
+    "salient_values": [
+      "C1=CC=CC=C1"
+    ]
+  },
+  {
+    "prompt": "I'm curious about the toxicity and absorption characteristics of a molecule; can you evaluate the one with SMILES 'CCN(CC)C(=O)O'?",
+    "salient_values": [
+      "CCN(CC)C(=O)O"
+    ]
+  },
+  {
+    "prompt": "Please provide the ADMET properties for a compound I am studying, specifically the one with the SMILES string 'C(C(=O)O)N' and include toxicity information.",
+    "salient_values": [
+      "C(C(=O)O)N"
+    ]
+  },
+  {
+    "prompt": "What can you tell me about the pharmacokinetic profile of the molecule represented by the SMILES 'C1CCCCC1'?",
+    "salient_values": [
+      "C1CCCCC1"
+    ]
+  }
+]

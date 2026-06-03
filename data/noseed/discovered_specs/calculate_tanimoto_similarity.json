@@ -1,0 +1,28 @@
+{
+  "name": "calculate_tanimoto_similarity",
+  "description": "Use this tool to calculate the Tanimoto similarity between two molecules represented by their SMILES strings. This tool is appropriate when you have two valid SMILES strings and want to quantify the similarity of the corresponding molecular structures. Do not use this tool if the SMILES strings are invalid or if you are looking for a different type of similarity measure, such as Euclidean distance or cosine similarity.",
+  "parameters": [
+    {
+      "name": "smiles_1",
+      "type": "string",
+      "description": "The SMILES string of the first molecule. Must be a valid SMILES representation.",
+      "required": true
+    },
+    {
+      "name": "smiles_2",
+      "type": "string",
+      "description": "The SMILES string of the second molecule. Must be a valid SMILES representation.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "similarity": {
+        "type": "number",
+        "description": "The Tanimoto similarity score between the two molecules, ranging from 0.0 (no similarity) to 1.0 (identical structures)."
+      }
+    },
+    "description": "The result of the Tanimoto similarity calculation."
+  }
+}

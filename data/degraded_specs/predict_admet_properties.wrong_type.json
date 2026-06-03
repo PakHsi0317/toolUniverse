@@ -1,0 +1,50 @@
+{
+  "name": "predict_admet_properties",
+  "description": "Predict the ADMET (Absorption, Distribution, Metabolism, Excretion, and Toxicity) properties of a molecule based on its SMILES (Simplified Molecular Input Line Entry System) string. Use this tool when you need to evaluate the pharmacokinetic and toxicological profile of a specific molecule. Do NOT use this tool for predicting properties of mixtures or non-organic compounds; for those cases, consider using a different cheminformatics tool.",
+  "parameters": [
+    {
+      "name": "smiles",
+      "type": "integer",
+      "description": "The SMILES representation of the molecule. Must be a valid SMILES string that accurately describes the molecular structure. There are no strict length limits, but it should be a reasonable representation of a molecule.",
+      "required": true
+    },
+    {
+      "name": "include_toxicity",
+      "type": "boolean",
+      "description": "Whether to include predicted toxicity properties in the response. Set to false if only ADMET properties are needed without toxicity information. Defaults to true.",
+      "required": false
+    },
+    {
+      "name": "model_type",
+      "type": "string",
+      "description": "The type of predictive model to use for the ADMET properties. Must be one of: 'default', 'advanced'. 'default' uses standard algorithms, while 'advanced' employs more complex models for potentially better accuracy. Defaults to 'default'.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "absorption": {
+        "type": "number",
+        "description": "Predicted absorption value (0-1), where 1 indicates high absorption and 0 indicates low absorption."
+      },
+      "distribution": {
+        "type": "number",
+        "description": "Predicted distribution value (0-1), indicating how well the molecule distributes in the body."
+      },
+      "metabolism": {
+        "type": "number",
+        "description": "Predicted metabolism rate (0-1), where higher values indicate faster metabolism."
+      },
+      "excretion": {
+        "type": "number",
+        "description": "Predicted excretion rate (0-1), indicating how quickly the molecule is eliminated from the body."
+      },
+      "toxicity": {
+        "type": "number",
+        "description": "Predicted toxicity level (0-1), where higher values indicate greater potential toxicity. Only present if include_toxicity is true."
+      }
+    },
+    "description": "ADMET property predictions including absorption, distribution, metabolism, excretion, and optional toxicity."
+  }
+}

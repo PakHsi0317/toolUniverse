@@ -1,0 +1,28 @@
+{
+  "name": "search_clinical_trials",
+  "description": "Search for clinical studies related to a disease or condition. Returns a list of relevant records with summaries. Use this tool to find information about a medical condition.",
+  "parameters": [
+    {
+      "name": "condition",
+      "type": "string",
+      "description": "The disease or medical condition to search for.",
+      "required": true
+    },
+    {
+      "name": "max_results",
+      "type": "integer",
+      "description": "Maximum number of records to return.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "results": {
+        "type": "array",
+        "description": "List of matching records, each with a title and summary."
+      }
+    },
+    "description": "Object containing a list of matching records."
+  }
+}

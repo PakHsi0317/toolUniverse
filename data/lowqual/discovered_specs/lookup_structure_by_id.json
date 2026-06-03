@@ -1,0 +1,36 @@
+{
+  "name": "lookup_structure_by_id",
+  "description": "Retrieve structural information for a specific molecular structure using its unique identifier. Use this tool when you have a known structure ID (e.g., a PDB ID) and need detailed information about the structure. Do NOT use this tool for searching structures by keywords or other criteria; for that, use 'search_structures_by_query'.",
+  "parameters": [
+    {
+      "name": "structure_id",
+      "type": "string",
+      "description": "The unique identifier for the structure, typically a 4-character PDB ID (e.g., '1A2B'). Must be a valid structure ID; the function raises an error if not found.",
+      "required": true
+    },
+    {
+      "name": "include_metadata",
+      "type": "boolean",
+      "description": "Whether to include additional metadata about the structure (e.g., authors, publication details). Set to false to reduce response size if only structural data is needed. Defaults to true.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "structure_id": {
+        "type": "string",
+        "description": "The structure ID (echoes input, case-sensitive)."
+      },
+      "structure_data": {
+        "type": "object",
+        "description": "Detailed structural information, including coordinates, bonds, and angles."
+      },
+      "metadata": {
+        "type": "object",
+        "description": "Additional metadata about the structure, only present if include_metadata=true."
+      }
+    },
+    "description": "Object containing the structure ID, structural data, and optional metadata."
+  }
+}

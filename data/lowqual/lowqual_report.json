@@ -1,0 +1,65 @@
+{
+  "n_tools": 5,
+  "avg_before": 0.64,
+  "avg_after": 0.64,
+  "delta": 0.0,
+  "improved": 0,
+  "regressed": 0,
+  "per_tool": [
+    {
+      "id": "pubmed_abstract",
+      "vague_description": "a tool that gets paper text from an id",
+      "rich_reference": "a tool that fetches the abstract of a PubMed paper given its PMID",
+      "spec_name": "get_paper_text_by_id",
+      "before_accuracy": 0.8,
+      "after_accuracy": 0.8,
+      "delta": 0.0,
+      "spec_changed": true,
+      "terminated_reason": "no_harm_guard (rejected rewrite to 'description': 40% < 60%)"
+    },
+    {
+      "id": "drug_side_effects",
+      "vague_description": "a tool that returns problems for a thing by name",
+      "rich_reference": "a tool that gets known side effects of a drug given the drug name",
+      "spec_name": "get_problems_by_name",
+      "before_accuracy": 0.2,
+      "after_accuracy": 0.2,
+      "delta": 0.0,
+      "spec_changed": true,
+      "terminated_reason": "max_iterations (3)"
+    },
+    {
+      "id": "gene_to_ensembl",
+      "vague_description": "a tool that converts one code to another code",
+      "rich_reference": "a tool that converts a gene symbol to its Ensembl gene ID",
+      "spec_name": "convert_code",
+      "before_accuracy": 1.0,
+      "after_accuracy": 1.0,
+      "delta": 0.0,
+      "spec_changed": false,
+      "terminated_reason": "target_reached (100%)"
+    },
+    {
+      "id": "tanimoto",
+      "vague_description": "a tool that compares two items and returns a number",
+      "rich_reference": "a tool that calculates the Tanimoto similarity between two molecules given their SMILES strings",
+      "spec_name": "compare_items",
+      "before_accuracy": 0.2,
+      "after_accuracy": 0.2,
+      "delta": 0.0,
+      "spec_changed": true,
+      "terminated_reason": "target_reached (100%)"
+    },
+    {
+      "id": "pdb_structure",
+      "vague_description": "a tool that looks up a structure by an id",
+      "rich_reference": "a tool that retrieves protein 3D structure given a PDB ID",
+      "spec_name": "lookup_structure_by_id",
+      "before_accuracy": 1.0,
+      "after_accuracy": 1.0,
+      "delta": 0.0,
+      "spec_changed": false,
+      "terminated_reason": "target_reached (100%)"
+    }
+  ]
+}

@@ -165,11 +165,142 @@ class TestOptimizerLoop:
             ToolCall(name="compute_bmi", arguments={"height_m": 1.75})  # missing required
         ]))
 
+        # detect_redesign=False to test the raw max_iterations exit in isolation
+        # (with it on, a persistently-stuck spec is reclassified needs_redesign —
+        # covered by TestNeedsRedesign below).
         loop = OptimizerLoop(llm=mock, log_path=tmp_path / "log.jsonl",
-                             n_prompts=3, max_iterations=3)
+                             n_prompts=3, max_iterations=3, detect_redesign=False)
         result = loop.optimize(bmi_spec)
         # Did not reach target, ran all 3 iterations
         assert len(result.iterations) == 3
         assert "max_iterations" in result.terminated_reason
         # Spec was rewritten each round (description changed)
         assert result.final_spec.parameters[0].description != result.initial_spec.parameters[0].description
+
+
+# ---------------------------------------------------------------------------
+# Do-no-harm guard
+# ---------------------------------------------------------------------------
+
+class TestNoHarmGuard:
+    """A rewrite that LOWERS accuracy must be rejected; the loop keeps the
+    last known-good spec and stops with a no_harm_guard reason."""
+
+    @staticmethod
+    def _target_desc(ctx: dict) -> str:
+        """The target spec is always the FIRST tool presented; return its description."""
+        tools = ctx.get("tools") or []
+        if not tools:
+            return ""
+        return tools[0].get("function", {}).get("description", "")
+
+    def _make_mock(self, tmp_path):
+        """Deterministic mock keyed on the TARGET SPEC's description (carried in
+        ctx['tools'][0], since InvocationTester puts the target spec first):
+        - initial spec (description starts "Compute body"): fail only on "t5" → 80%.
+        - rewritten spec (description == "Harmful rewrite."): ALWAYS fail → 0%.
+        Branching on spec content (not a call counter) keeps it order-independent.
+        """
+        mock = MockLLMClient(cache_dir=tmp_path)
+        mock.register("Tool specification:", lambda p, ctx: LLMResponse(
+            text='{"prompts": ["t1", "t2", "t3", "t4", "t5"]}'
+        ))
+        mock.register("MECHANICAL CLASSIFICATION", lambda p, ctx: LLMResponse(text=json.dumps({
+            "blamed_field": "description",
+            "root_cause": "ambiguous",
+            "suggested_rewrite": {"field": "description", "new_value": "Harmful rewrite."}
+        })))
+
+        fail_call = LLMResponse(tool_calls=[ToolCall(name="compute_bmi",
+                                arguments={"height_m": 1.75})])           # missing required
+        ok_call = LLMResponse(tool_calls=[ToolCall(name="compute_bmi",
+                              arguments={"weight_kg": 70.0, "height_m": 1.75})])
+
+        def tool_responder(p, ctx):
+            desc = self._target_desc(ctx)
+            if "Harmful rewrite." in desc:
+                return fail_call                       # regressed spec → 0%
+            return fail_call if "t5" in p else ok_call  # initial spec → 80%
+
+        mock.register("", tool_responder)
+        return mock
+
+    def test_guard_rejects_regression(self, bmi_spec, tmp_path):
+        mock = self._make_mock(tmp_path)
+        # detect_redesign=False to isolate the guard's rejection behaviour.
+        loop = OptimizerLoop(llm=mock, log_path=tmp_path / "log.jsonl",
+                             n_prompts=5, max_iterations=3, do_no_harm=True,
+                             detect_redesign=False)
+        result = loop.optimize(bmi_spec)
+        # Initial spec = 80%; harmful rewrite → 0% must be rejected.
+        assert "no_harm_guard" in result.terminated_reason
+        assert result.final_spec.description == bmi_spec.description  # unchanged
+
+    def test_guard_disabled_allows_regression(self, bmi_spec, tmp_path):
+        mock = self._make_mock(tmp_path)
+        loop = OptimizerLoop(llm=mock, log_path=tmp_path / "log.jsonl",
+                             n_prompts=5, max_iterations=3, do_no_harm=False)
+        result = loop.optimize(bmi_spec)
+        # Without the guard, the harmful rewrite IS committed (description changes).
+        assert result.final_spec.description == "Harmful rewrite."
+        assert "no_harm_guard" not in result.terminated_reason
+
+
+# ---------------------------------------------------------------------------
+# needs_redesign — structural-defect detection
+# ---------------------------------------------------------------------------
+
+class TestNeedsRedesign:
+    """When the diagnoser's best field-level fix cannot lift a failing spec,
+    the loop concludes the defect is STRUCTURAL and flags needs_redesign."""
+
+    @staticmethod
+    def _target_desc(ctx: dict) -> str:
+        tools = ctx.get("tools") or []
+        return tools[0].get("function", {}).get("description", "") if tools else ""
+
+    def test_guard_path_flags_redesign(self, bmi_spec, tmp_path):
+        """Initial spec fails (60%), the one field fix the diagnoser proposes
+        makes it worse → guard rejects → structural → needs_redesign."""
+        mock = MockLLMClient(cache_dir=tmp_path)
+        mock.register("Tool specification:", lambda p, ctx: LLMResponse(
+            text='{"prompts": ["t1", "t2", "t3", "t4", "t5"]}'
+        ))
+        mock.register("MECHANICAL CLASSIFICATION", lambda p, ctx: LLMResponse(text=json.dumps({
+            "blamed_field": "description",
+            "root_cause": "scope too broad",
+            "suggested_rewrite": {"field": "description", "new_value": "Worse scope."}
+        })))
+        fail = LLMResponse(tool_calls=[ToolCall(name="compute_bmi",
+                           arguments={"height_m": 1.75})])
+        ok = LLMResponse(tool_calls=[ToolCall(name="compute_bmi",
+                         arguments={"weight_kg": 70.0, "height_m": 1.75})])
+
+        def responder(p, ctx):
+            if "Worse scope." in self._target_desc(ctx):
+                return fail                              # rewrite → 0% (worse)
+            return ok if p.endswith("t1") or p.endswith("t2") or p.endswith("t3") else fail  # 60%
+
+        mock.register("", responder)
+        loop = OptimizerLoop(llm=mock, log_path=tmp_path / "log.jsonl",
+                             n_prompts=5, max_iterations=3,
+                             do_no_harm=True, detect_redesign=True)
+        result = loop.optimize(bmi_spec)
+        assert result.needs_redesign
+        assert "needs_redesign" in result.terminated_reason
+        assert result.final_spec.description == bmi_spec.description  # untouched
+
+    def test_clean_spec_not_flagged(self, bmi_spec, tmp_path):
+        """A spec that reaches target must NOT be flagged for redesign."""
+        mock = MockLLMClient(cache_dir=tmp_path)
+        mock.register("Tool specification:", lambda p, ctx: LLMResponse(
+            text='{"prompts": ["t1", "t2", "t3", "t4", "t5"]}'
+        ))
+        mock.register("", lambda p, ctx: LLMResponse(tool_calls=[
+            ToolCall(name="compute_bmi", arguments={"weight_kg": 70.0, "height_m": 1.75})
+        ]))
+        loop = OptimizerLoop(llm=mock, log_path=tmp_path / "log.jsonl",
+                             n_prompts=5, max_iterations=3, detect_redesign=True)
+        result = loop.optimize(bmi_spec)
+        assert not result.needs_redesign
+        assert "target_reached" in result.terminated_reason

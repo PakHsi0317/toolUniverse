@@ -20,6 +20,42 @@ class _PromptList(BaseModel):
     prompts: list[str] = Field(..., min_length=1, max_length=20)
 
 
+class PromptWithGroundTruth(BaseModel):
+    """A test prompt paired with the literal values that MUST land in some
+    argument of a correct call (used to evaluate dimension ⑤ values_ok)."""
+    prompt: str = Field(..., description="One realistic user task, single sentence.")
+    salient_values: list[str] = Field(
+        default_factory=list,
+        description=(
+            "Literal values that appear VERBATIM in the prompt and must be passed "
+            "as an argument value for the call to be semantically correct — e.g. a "
+            "PMID '12345678', a PDB id '1HVR', a SMILES string. Leave EMPTY if the "
+            "prompt only refers to entities indirectly (e.g. 'caffeine') with no "
+            "literal value the model could copy verbatim."
+        ),
+    )
+
+
+class _PromptWithGTList(BaseModel):
+    """Wrapper so LLM returns a structured list of prompt+ground-truth pairs."""
+    items: list[PromptWithGroundTruth] = Field(..., min_length=1, max_length=20)
+
+
+_SALIENT_INSTRUCTIONS = """
+For EACH task you generate, also extract its `salient_values`: the list of literal \
+values that appear VERBATIM in your task sentence AND must be passed as an argument \
+value for the call to count as semantically correct.
+
+Rules for salient_values (critical — follow exactly):
+- Include a value ONLY if it appears character-for-character in the prompt and a \
+  correct call must copy it into an argument (e.g. a PMID '12345678', a PDB id '1HVR', \
+  a raw SMILES string 'CC(=O)O', an explicit threshold '0.85').
+- DO NOT include entities the model must translate/look up (e.g. a gene name that maps \
+  to an ID, 'caffeine' that maps to a SMILES) — those are NOT verbatim-copyable. \
+  Leave salient_values EMPTY for such prompts.
+- It is correct and expected for many prompts to have an EMPTY salient_values list."""
+
+
 _SYSTEM = """You generate realistic user tasks that should cause an AI agent to call \
 a specific tool. Each task is a single sentence in natural language, written as if \
 a real user (scientist, clinician, student) is asking the question."""
@@ -97,3 +133,43 @@ class TestPromptGenerator:
             max_tokens=1500,
         )
         return result.prompts[:n]
+
+    def generate_with_salient(
+        self,
+        spec: ToolSpec,
+        n: int = 5,
+        prior_failures: Optional[list[FailureRecord]] = None,
+    ) -> list[PromptWithGroundTruth]:
+        """Like generate(), but each prompt is paired with salient_values —
+        the verbatim literal values a correct call must copy into an argument.
+        Enables dimension ⑤ (values_ok) in diagnose_dimensions().
+
+        A post-filter drops any salient value that does NOT actually appear in
+        its prompt string, so the ground truth can never be hallucinated.
+        """
+        feedback_block = ""
+        if prior_failures:
+            feedback_block = _FEEDBACK_TEMPLATE.format(
+                failure_summary=_summarize_failures(prior_failures)
+            )
+        prompt = _USER_TEMPLATE.format(
+            spec_json=spec.model_dump_json(indent=2),
+            n=n,
+            feedback_block=feedback_block,
+        ) + _SALIENT_INSTRUCTIONS
+        result = self.llm.complete_structured(
+            prompt=prompt,
+            schema=_PromptWithGTList,
+            system=_SYSTEM,
+            temperature=0.3,
+            max_tokens=2000,
+        )
+        items = result.items[:n]
+        # Safety net: keep only salient values that literally occur in the prompt
+        # (case-insensitive). Guards against the model inventing ground truth.
+        for it in items:
+            low = it.prompt.lower()
+            it.salient_values = [
+                v for v in it.salient_values if str(v).strip().lower() in low
+            ]
+        return items

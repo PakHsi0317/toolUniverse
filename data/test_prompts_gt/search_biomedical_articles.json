@@ -1,0 +1,26 @@
+[
+  {
+    "prompt": "Can you find recent studies on hypertension and its effects on kidney function?",
+    "salient_values": []
+  },
+  {
+    "prompt": "I'm looking for articles about Alzheimer's disease published in the last 10 years.",
+    "salient_values": []
+  },
+  {
+    "prompt": "Dr. Lee wants to review the latest research on diabetes mellitus and its complications.",
+    "salient_values": [
+      "diabetes mellitus"
+    ]
+  },
+  {
+    "prompt": "Please search for literature on the gene linked to cystic fibrosis.",
+    "salient_values": []
+  },
+  {
+    "prompt": "What can you tell me about the latest findings related to breast cancer?",
+    "salient_values": [
+      "breast cancer"
+    ]
+  }
+]

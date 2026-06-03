@@ -1,0 +1,38 @@
+{
+  "name": "predict_admet_properties",
+  "description": "Use this tool to predict the ADMET (Absorption, Distribution, Metabolism, Excretion, and Toxicity) properties of a molecule based on its SMILES (Simplified Molecular Input Line Entry System) string. This tool is suitable when you have a valid SMILES representation of a molecule and need to assess its pharmacokinetic and toxicological profiles. Do not use this tool if the SMILES string is invalid or if you require experimental data instead of computational predictions.",
+  "parameters": [
+    {
+      "name": "smiles_string",
+      "type": "string",
+      "description": "The SMILES representation of the molecule for which ADMET properties are to be predicted. Must be a valid SMILES string.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "absorption": {
+        "type": "number",
+        "description": "Predicted absorption value, ranging from 0.0 to 1.0, where 1.0 indicates high absorption."
+      },
+      "distribution": {
+        "type": "number",
+        "description": "Predicted distribution value, ranging from 0.0 to 1.0, where 1.0 indicates high distribution."
+      },
+      "metabolism": {
+        "type": "number",
+        "description": "Predicted metabolism rate, with higher values indicating faster metabolism."
+      },
+      "excretion": {
+        "type": "number",
+        "description": "Predicted excretion rate, with higher values indicating faster excretion."
+      },
+      "toxicity": {
+        "type": "number",
+        "description": "Predicted toxicity level, ranging from 0.0 to 1.0, where 1.0 indicates high toxicity."
+      }
+    },
+    "description": "The predicted ADMET properties of the molecule."
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "n_tools_in_competition": 15,
+  "pair_members": [
+    "search_clinical_trials",
+    "search_biomedical_articles",
+    "get_gene_info",
+    "convert_gene_symbol_to_ensembl_id",
+    "compute_molecular_fingerprint_similarity",
+    "compute_tanimoto_similarity",
+    "get_drug_interactions",
+    "get_drug_side_effects"
+  ],
+  "avg_before": 0.9,
+  "avg_after": 0.95,
+  "per_tool": [
+    {
+      "tool_name": "search_clinical_trials",
+      "before_accuracy": 1.0,
+      "after_accuracy": 1.0,
+      "delta": 0.0,
+      "spec_changed": false,
+      "terminated_reason": "target_reached (100%)",
+      "baseline_misroutes": {}
+    },
+    {
+      "tool_name": "search_biomedical_articles",
+      "before_accuracy": 0.6,
+      "after_accuracy": 0.8,
+      "delta": 0.20000000000000007,
+      "spec_changed": true,
+      "terminated_reason": "target_reached (100%)",
+      "baseline_misroutes": {
+        "search_clinical_trials": 1,
+        "rank_therapeutic_targets": 1
+      }
+    },
+    {
+      "tool_name": "get_gene_info",
+      "before_accuracy": 1.0,
+      "after_accuracy": 1.0,
+      "delta": 0.0,
+      "spec_changed": false,
+      "terminated_reason": "target_reached (100%)",
+      "baseline_misroutes": {}
+    },
+    {
+      "tool_name": "convert_gene_symbol_to_ensembl_id",
+      "before_accuracy": 1.0,
+      "after_accuracy": 1.0,
+      "delta": 0.0,
+      "spec_changed": false,
+      "terminated_reason": "target_reached (100%)",
+      "baseline_misroutes": {}
+    },
+    {
+      "tool_name": "compute_molecular_fingerprint_similarity",
+      "before_accuracy": 0.8,
+      "after_accuracy": 0.8,
+      "delta": 0.0,
+      "spec_changed": false,
+      "terminated_reason": "no_harm_guard (rejected rewrite to 'description': 40% < 60%)",
+      "baseline_misroutes": {
+        "compute_tanimoto_similarity": 1
+      }
+    },
+    {
+      "tool_name": "compute_tanimoto_similarity",
+      "before_accuracy": 1.0,
+      "after_accuracy": 1.0,
+      "delta": 0.0,
+      "spec_changed": false,
+      "terminated_reason": "target_reached (100%)",
+      "baseline_misroutes": {}
+    },
+    {
+      "tool_name": "get_drug_interactions",
+      "before_accuracy": 0.8,
+      "after_accuracy": 1.0,
+      "delta": 0.19999999999999996,
+      "spec_changed": true,
+      "terminated_reason": "target_reached (100%)",
+      "baseline_misroutes": {
+        "get_drug_side_effects": 1
+      }
+    },
+    {
+      "tool_name": "get_drug_side_effects",
+      "before_accuracy": 1.0,
+      "after_accuracy": 1.0,
+      "delta": 0.0,
+      "spec_changed": false,
+      "terminated_reason": "target_reached (100%)",
+      "baseline_misroutes": {}
+    }
+  ]
+}

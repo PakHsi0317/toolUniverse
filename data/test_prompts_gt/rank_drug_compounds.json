@@ -1,0 +1,64 @@
+[
+  {
+    "prompt": "Can you evaluate the potential effectiveness and safety of three drug candidates with binding affinities of -7.5, -8.2, and -7.0, toxicity risks of 0.2, 0.4, and 0.1, and blood-brain barrier penetration scores of 0.8, 0.6, and 0.9?",
+    "salient_values": [
+      "-7.5",
+      "-8.2",
+      "-7.0",
+      "0.2",
+      "0.4",
+      "0.1",
+      "0.8",
+      "0.6",
+      "0.9"
+    ]
+  },
+  {
+    "prompt": "Dr. Lee wants to compare several compounds for Alzheimer's treatment, focusing on their binding affinities and toxicity risks, but doesn't need to specify the number of compounds.",
+    "salient_values": []
+  },
+  {
+    "prompt": "I have five drug candidates with varying properties: their binding affinities are -6.5, -7.1, -8.0, -7.3, and -7.8; toxicity risks are 0.3, 0.5, 0.2, 0.4, and 0.1; and their blood-brain barrier penetration scores are 0.7, 0.9, 0.4, 0.5, and 0.6. Please rank them.",
+    "salient_values": [
+      "-6.5",
+      "-7.1",
+      "-8.0",
+      "-7.3",
+      "-7.8",
+      "0.3",
+      "0.5",
+      "0.2",
+      "0.4",
+      "0.1",
+      "0.7",
+      "0.9",
+      "0.4",
+      "0.5",
+      "0.6"
+    ]
+  },
+  {
+    "prompt": "Evaluate the safety and effectiveness of the following compounds: one with a binding affinity of -8.5, a toxicity risk of 0.3, and a blood-brain barrier score of 0.2, and another with a binding affinity of -7.0 and a toxicity risk of 0.1.",
+    "salient_values": [
+      "-8.5",
+      "0.3",
+      "0.2",
+      "-7.0",
+      "0.1"
+    ]
+  },
+  {
+    "prompt": "I need to rank three new drug candidates based on their predicted binding affinities, toxicity risks, and blood-brain barrier penetration scores, which are -7.2, -8.1, and -7.4 for binding affinities, 0.4, 0.2, and 0.3 for toxicity risks, and 0.6, 0.8, and 0.5 for penetration scores.",
+    "salient_values": [
+      "-7.2",
+      "-8.1",
+      "-7.4",
+      "0.4",
+      "0.2",
+      "0.3",
+      "0.6",
+      "0.8",
+      "0.5"
+    ]
+  }
+]

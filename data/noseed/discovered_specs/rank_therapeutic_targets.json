@@ -1,0 +1,68 @@
+{
+  "name": "rank_therapeutic_targets",
+  "description": "Use this tool to rank potential therapeutic targets for a specific disease based on genetic evidence, tissue expression, druggability, and literature support. Do not use this tool if you do not have a specific disease in mind or if you are looking for general information about therapeutic targets without specific criteria.",
+  "parameters": [
+    {
+      "name": "disease_name",
+      "type": "string",
+      "description": "The name of the disease for which therapeutic targets are being ranked. Must be a valid disease name recognized in medical literature.",
+      "required": true
+    },
+    {
+      "name": "genetic_evidence",
+      "type": "array",
+      "description": "A list of genetic evidence items supporting the potential targets. Each item should be a string representing a specific genetic finding related to the disease.",
+      "required": true
+    },
+    {
+      "name": "tissue_expression",
+      "type": "array",
+      "description": "A list of tissues where the potential targets are expressed. Each item should be a string representing a tissue name.",
+      "required": true
+    },
+    {
+      "name": "druggability_score",
+      "type": "number",
+      "description": "A score representing the druggability of the targets, ranging from 0.0 to 1.0, where 1.0 indicates highly druggable targets. Default is 0.5 if not provided.",
+      "required": false
+    },
+    {
+      "name": "literature_support",
+      "type": "array",
+      "description": "A list of references or studies supporting the potential targets. Each item should be a string representing a citation or link to the literature.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "ranked_targets": {
+        "type": "array",
+        "description": "An array of objects representing the ranked therapeutic targets.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "target_name": {
+              "type": "string",
+              "description": "The name of the therapeutic target."
+            },
+            "rank": {
+              "type": "integer",
+              "description": "The rank of the target, with 1 being the highest priority."
+            },
+            "score": {
+              "type": "number",
+              "description": "A composite score based on genetic evidence, tissue expression, druggability, and literature support."
+            }
+          },
+          "required": [
+            "target_name",
+            "rank",
+            "score"
+          ]
+        }
+      }
+    },
+    "description": "A ranked list of therapeutic targets based on the provided criteria."
+  }
+}

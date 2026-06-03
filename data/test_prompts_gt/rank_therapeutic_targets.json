@@ -1,0 +1,35 @@
+[
+  {
+    "prompt": "I'm researching potential targets for treating Alzheimer's disease and need to prioritize them based on genetic evidence and druggability.",
+    "salient_values": [
+      "Alzheimer's disease"
+    ]
+  },
+  {
+    "prompt": "Can you provide a ranked list of therapeutic targets for breast cancer, focusing on those with at least 10 supporting literature references?",
+    "salient_values": [
+      "breast cancer",
+      "10"
+    ]
+  },
+  {
+    "prompt": "Dr. Lee wants to evaluate targets for hypertension, particularly those with strong genetic evidence and high tissue expression.",
+    "salient_values": [
+      "hypertension"
+    ]
+  },
+  {
+    "prompt": "Please rank the therapeutic targets for cystic fibrosis, ensuring that the targets have a druggability score above 0.7.",
+    "salient_values": [
+      "cystic fibrosis",
+      "0.7"
+    ]
+  },
+  {
+    "prompt": "I'm looking into targets for type 2 diabetes and would like to see which ones have a minimum tissue expression level of 0.2.",
+    "salient_values": [
+      "type 2 diabetes",
+      "0.2"
+    ]
+  }
+]

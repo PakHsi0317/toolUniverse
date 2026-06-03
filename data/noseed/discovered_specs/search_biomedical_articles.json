@@ -1,0 +1,74 @@
+{
+  "name": "search_biomedical_articles",
+  "description": "Use this tool to search for biomedical articles related to a specific disease name. It is suitable when you need to find research papers, reviews, or clinical studies associated with a particular disease. Do not use this tool for general medical inquiries or non-biomedical topics. For broader medical searches, consider using a general search engine or medical database that covers a wider range of topics.",
+  "parameters": [
+    {
+      "name": "disease_name",
+      "type": "string",
+      "description": "The name of the disease for which to search biomedical articles. Must be a valid disease name as recognized in medical literature.",
+      "required": true
+    },
+    {
+      "name": "max_results",
+      "type": "integer",
+      "description": "The maximum number of articles to return. Must be a positive integer. Default is 10.",
+      "required": false
+    },
+    {
+      "name": "include_reviews",
+      "type": "boolean",
+      "description": "Indicates whether to include review articles in the search results. Default is true.",
+      "required": false
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "articles": {
+        "type": "array",
+        "description": "An array of articles found in the search.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "The title of the article."
+            },
+            "authors": {
+              "type": "array",
+              "description": "A list of authors of the article.",
+              "items": {
+                "type": "string"
+              }
+            },
+            "journal": {
+              "type": "string",
+              "description": "The journal in which the article was published."
+            },
+            "publication_date": {
+              "type": "string",
+              "description": "The publication date of the article in ISO 8601 format (YYYY-MM-DD)."
+            },
+            "abstract": {
+              "type": "string",
+              "description": "A brief summary of the article."
+            },
+            "doi": {
+              "type": "string",
+              "description": "The Digital Object Identifier of the article."
+            }
+          },
+          "required": [
+            "title",
+            "authors",
+            "journal",
+            "publication_date",
+            "abstract",
+            "doi"
+          ]
+        }
+      }
+    },
+    "description": "A list of biomedical articles related to the specified disease name."
+  }
+}

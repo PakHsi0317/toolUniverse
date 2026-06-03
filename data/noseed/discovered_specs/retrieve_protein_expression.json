@@ -1,0 +1,43 @@
+{
+  "name": "retrieve_protein_expression",
+  "description": "Use this tool to retrieve protein tissue expression information for a specific gene name. This tool is appropriate when you need detailed expression data related to a gene. Do not use this tool if you are looking for general information about genes or if you need data on multiple genes at once; consider using a batch query tool instead.",
+  "parameters": [
+    {
+      "name": "gene_name",
+      "type": "string",
+      "description": "The name of the gene for which protein tissue expression information is requested. Must be a valid gene symbol recognized in biological databases.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "gene_name": {
+        "type": "string",
+        "description": "The gene name that was queried."
+      },
+      "expression_data": {
+        "type": "array",
+        "description": "An array of objects containing tissue expression information.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "tissue": {
+              "type": "string",
+              "description": "The name of the tissue where the expression was measured."
+            },
+            "expression_level": {
+              "type": "number",
+              "description": "The level of expression of the protein in the specified tissue, typically on a scale from 0 to 100."
+            }
+          },
+          "required": [
+            "tissue",
+            "expression_level"
+          ]
+        }
+      }
+    },
+    "description": "Returns protein tissue expression data for the specified gene."
+  }
+}

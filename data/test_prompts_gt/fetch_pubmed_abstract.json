@@ -1,0 +1,28 @@
+[
+  {
+    "prompt": "Can you retrieve the abstract for the article with PMID 12345678?",
+    "salient_values": [
+      "12345678"
+    ]
+  },
+  {
+    "prompt": "I need the abstract of the study related to hypertension; please find it using the PMID 98765432.",
+    "salient_values": [
+      "98765432"
+    ]
+  },
+  {
+    "prompt": "Dr. Lee is looking for the abstract of a recent article on Alzheimer's; can you fetch it if you have the PMID?",
+    "salient_values": []
+  },
+  {
+    "prompt": "Please get me the abstract for the article with the PMID 23456789 about the effects of aspirin.",
+    "salient_values": [
+      "23456789"
+    ]
+  },
+  {
+    "prompt": "What does the abstract say for the article that has the PMID associated with BRCA1 research?",
+    "salient_values": []
+  }
+]

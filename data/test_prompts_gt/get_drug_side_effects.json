@@ -1,0 +1,32 @@
+[
+  {
+    "prompt": "Can you tell me what side effects I might experience if I take atorvastatin?",
+    "salient_values": [
+      "atorvastatin"
+    ]
+  },
+  {
+    "prompt": "I'm researching the potential adverse effects of metformin; could you provide that information?",
+    "salient_values": [
+      "metformin"
+    ]
+  },
+  {
+    "prompt": "Dr. Lee wants to know the common and rare side effects associated with ibuprofen for her patients.",
+    "salient_values": [
+      "ibuprofen"
+    ]
+  },
+  {
+    "prompt": "What are the known side effects of sertraline, especially the less common ones?",
+    "salient_values": [
+      "sertraline"
+    ]
+  },
+  {
+    "prompt": "List the side effects of lisinopril, please.",
+    "salient_values": [
+      "lisinopril"
+    ]
+  }
+]

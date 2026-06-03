@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "purpose": "B1 experiment: deliberately vague NL descriptions that strip the entity types, parameter cues, and domain qualifiers present in the main-line descriptions. Goal: make the Discoverer NATURALLY generate flawed specs (wrong types, vague param names, missing distinctions), so the Optimizer has real — not injected — defects to fix.",
+    "isolation": "Lives under data/lowqual/. Does NOT touch data/tool_descriptions.json or any main-line artifact.",
+    "pairing": "Each item maps to a main-line tool so we can compare baseline accuracy of the rich spec vs. the low-quality spec."
+  },
+  "tools": [
+    {
+      "id": "pubmed_abstract",
+      "lowqual": "a tool that gets paper text from an id",
+      "rich_reference": "a tool that fetches the abstract of a PubMed paper given its PMID"
+    },
+    {
+      "id": "drug_side_effects",
+      "lowqual": "a tool that returns problems for a thing by name",
+      "rich_reference": "a tool that gets known side effects of a drug given the drug name"
+    },
+    {
+      "id": "gene_to_ensembl",
+      "lowqual": "a tool that converts one code to another code",
+      "rich_reference": "a tool that converts a gene symbol to its Ensembl gene ID"
+    },
+    {
+      "id": "tanimoto",
+      "lowqual": "a tool that compares two items and returns a number",
+      "rich_reference": "a tool that calculates the Tanimoto similarity between two molecules given their SMILES strings"
+    },
+    {
+      "id": "pdb_structure",
+      "lowqual": "a tool that looks up a structure by an id",
+      "rich_reference": "a tool that retrieves protein 3D structure given a PDB ID"
+    }
+  ]
+}

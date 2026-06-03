@@ -1,0 +1,28 @@
+{
+  "name": "compute_molecular_fingerprint_similarity",
+  "description": "Compute the similarity between two molecules using their molecular fingerprints. Use this tool to compare how similar two chemical compounds are based on their SMILES representations.",
+  "parameters": [
+    {
+      "name": "smiles_a",
+      "type": "string",
+      "description": "SMILES string of the first molecule.",
+      "required": true
+    },
+    {
+      "name": "smiles_b",
+      "type": "string",
+      "description": "SMILES string of the second molecule.",
+      "required": true
+    }
+  ],
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "similarity": {
+        "type": "number",
+        "description": "Similarity score between the two molecules."
+      }
+    },
+    "description": "Object containing the similarity score."
+  }
+}

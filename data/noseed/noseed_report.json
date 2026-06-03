@@ -1,0 +1,121 @@
+{
+  "n_tools": 11,
+  "avg_before": 0.7090909090909091,
+  "avg_after": 0.7636363636363637,
+  "delta": 0.054545454545454564,
+  "improved": 2,
+  "regressed": 0,
+  "needs_redesign_count": 5,
+  "per_tool": [
+    {
+      "description": "a tool that fetches the abstract of a PubMed paper given its PMID",
+      "spec_name": "fetch_pubmed_abstract",
+      "valid": true,
+      "before_accuracy": 0.6,
+      "after_accuracy": 0.6,
+      "delta": 0.0,
+      "needs_redesign": true,
+      "terminated_reason": "needs_redesign (field-level fix to 'description' cannot lift held-out 80%; structural defect)"
+    },
+    {
+      "description": "a tool that searches biomedical articles related to a disease name",
+      "spec_name": "search_biomedical_articles",
+      "valid": true,
+      "before_accuracy": 1.0,
+      "after_accuracy": 1.0,
+      "delta": 0.0,
+      "needs_redesign": false,
+      "terminated_reason": "target_reached (100%)"
+    },
+    {
+      "description": "a tool that gets known side effects of a drug given the drug name",
+      "spec_name": "get_drug_side_effects",
+      "valid": true,
+      "before_accuracy": 1.0,
+      "after_accuracy": 1.0,
+      "delta": 0.0,
+      "needs_redesign": false,
+      "terminated_reason": "target_reached (100%)"
+    },
+    {
+      "description": "a tool that converts a gene symbol to its Ensembl gene ID",
+      "spec_name": "convert_gene_symbol_to_ensembl_id",
+      "valid": true,
+      "before_accuracy": 1.0,
+      "after_accuracy": 1.0,
+      "delta": 0.0,
+      "needs_redesign": false,
+      "terminated_reason": "target_reached (100%)"
+    },
+    {
+      "description": "a tool that retrieves protein tissue expression information given a gene name",
+      "spec_name": "retrieve_protein_expression",
+      "valid": true,
+      "before_accuracy": 0.0,
+      "after_accuracy": 0.0,
+      "delta": 0.0,
+      "needs_redesign": true,
+      "terminated_reason": "needs_redesign (no field-level fix lifted 0% over 3 rounds; structural defect)"
+    },
+    {
+      "description": "a tool that finds similar molecules given a SMILES string",
+      "spec_name": "find_similar_molecules",
+      "valid": true,
+      "before_accuracy": 1.0,
+      "after_accuracy": 1.0,
+      "delta": 0.0,
+      "needs_redesign": false,
+      "terminated_reason": "target_reached (100%)"
+    },
+    {
+      "description": "a tool that predicts ADMET properties of a molecule given its SMILES string",
+      "spec_name": "predict_admet_properties",
+      "valid": true,
+      "before_accuracy": 1.0,
+      "after_accuracy": 1.0,
+      "delta": 0.0,
+      "needs_redesign": false,
+      "terminated_reason": "target_reached (100%)"
+    },
+    {
+      "description": "a tool that calculates the Tanimoto similarity between two molecules given their SMILES strings",
+      "spec_name": "calculate_tanimoto_similarity",
+      "valid": true,
+      "before_accuracy": 0.6,
+      "after_accuracy": 1.0,
+      "delta": 0.4,
+      "needs_redesign": false,
+      "terminated_reason": "target_reached (100%)"
+    },
+    {
+      "description": "a tool that ranks candidate drug compounds by combining their predicted binding affinity, toxicity risk, and blood-brain barrier penetration score",
+      "spec_name": "rank_candidate_drug_compounds",
+      "valid": true,
+      "before_accuracy": 0.4,
+      "after_accuracy": 0.4,
+      "delta": 0.0,
+      "needs_redesign": true,
+      "terminated_reason": "needs_redesign (field-level fix to 'description' cannot lift held-out 20%; structural defect)"
+    },
+    {
+      "description": "a tool that ranks possible therapeutic targets for a disease based on genetic evidence, tissue expression, druggability, and literature support",
+      "spec_name": "rank_therapeutic_targets",
+      "valid": true,
+      "before_accuracy": 0.6,
+      "after_accuracy": 0.6,
+      "delta": 0.0,
+      "needs_redesign": true,
+      "terminated_reason": "needs_redesign (field-level fix to 'description' cannot lift held-out 80%; structural defect)"
+    },
+    {
+      "description": "a tool that retrieves protein 3D structure given a PDB ID",
+      "spec_name": "retrieve_protein_structure",
+      "valid": true,
+      "before_accuracy": 0.6,
+      "after_accuracy": 0.8,
+      "delta": 0.20000000000000007,
+      "needs_redesign": true,
+      "terminated_reason": "needs_redesign (no field-level fix lifted 60% over 3 rounds; structural defect)"
+    }
+  ]
+}

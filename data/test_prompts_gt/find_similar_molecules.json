@@ -1,0 +1,31 @@
+[
+  {
+    "prompt": "I'm looking for molecules similar to the one represented by the SMILES string 'CC(=O)OC1=CC=CC=C1C(=C)C(=O)O'.",
+    "salient_values": [
+      "CC(=O)OC1=CC=CC=C1C(=C)C(=O)O"
+    ]
+  },
+  {
+    "prompt": "Can you find compounds that are structurally similar to 'C1=CC=C(C=C1)C(=O)O'?",
+    "salient_values": [
+      "C1=CC=C(C=C1)C(=O)O"
+    ]
+  },
+  {
+    "prompt": "Dr. Lee wants to explore molecules that resemble the structure of ibuprofen; please find some.",
+    "salient_values": []
+  },
+  {
+    "prompt": "What are some similar chemical structures to the one with the SMILES 'C1CCCCC1'?",
+    "salient_values": [
+      "C1CCCCC1"
+    ]
+  },
+  {
+    "prompt": "Please identify similar molecules to the one represented by the SMILES string 'CCN(CC)C(=O)C1=CC=CC=C1C(=O)O' with a similarity score of at least 0.8.",
+    "salient_values": [
+      "CCN(CC)C(=O)C1=CC=CC=C1C(=O)O",
+      "0.8"
+    ]
+  }
+]
