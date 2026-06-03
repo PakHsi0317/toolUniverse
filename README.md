@@ -1,111 +1,127 @@
-# SpecForge
+# toolUniverse Assignment
 
-SpecForge is a research prototype for one focused question:
+This repository is my assignment project based on the ToolUniverse-style idea of
+tool specification generation and optimization.
 
-> If an LLM is given a tool specification that is slightly wrong, can we
-> automatically diagnose which field is causing bad tool calls and rewrite only
-> that field until invocation accuracy improves?
+The main goal of this assignment is:
 
-The repo has two cooperating parts:
+- start from a natural-language tool description
+- generate a structured tool spec automatically
+- test whether an LLM can call that tool correctly
+- improve the spec through an optimization loop when the tool call fails
 
-- `Discoverer`: turns a plain-English tool description into a structured `ToolSpec` plus a Python stub.
-- `Optimizer`: stress-tests that spec in multi-tool competition, classifies failures mechanically, diagnoses the likely bad field, and applies a single-field rewrite.
+In short, this project asks:
 
-The implementation is inspired by the ToolUniverse framing, but the code here is a self-contained experimental pipeline rather than a production agent runtime.
+> Can we automatically discover a tool spec, test it in multi-tool competition,
+> find what field is causing failure, and rewrite only that part to improve
+> invocation accuracy?
 
-## At a glance
+## What I built
+
+I split the project into two main parts:
+
+### 1. Discoverer
+
+The Discoverer takes a plain-English tool description and produces:
+
+- a `ToolSpec` JSON
+- a Python stub for that tool
+
+The pipeline is:
 
 ```text
-Natural-language description
-    -> Discoverer
-       -> ToolSpec JSON
-       -> Python stub
-    -> Baseline evaluation
-       -> multi-tool invocation accuracy
-    -> Optimizer loop
-       -> test -> classify -> diagnose -> rewrite
-       -> improved ToolSpec (or needs_redesign)
+tool description
+-> retrieve a few similar seed templates
+-> generate a ToolSpec with the LLM
+-> generate a deterministic Python stub
+-> validate the result
 ```
 
-What is already in the repo:
+### 2. Optimizer
 
-- Source code for the Discoverer and Optimizer
-- Checked-in generated artifacts under `data/`
-- Multiple experiment scripts for degradation, confusion, low-quality inputs, and redesign detection
-- Unit tests that run locally with a mock LLM
+The Optimizer checks whether the LLM can use the generated tool spec correctly.
+If the call is wrong, it:
 
-What this repo is not:
+- generates test prompts
+- runs the tool-calling evaluation
+- classifies the failure type
+- diagnoses which field in the spec is most likely responsible
+- rewrites only that field
+- repeats for up to 3 iterations
 
-- A real tool execution framework
-- A package with polished install tooling
-- A benchmark that depends on hidden data; most outputs are already committed for inspection
+So the full idea is:
 
-## Core idea
+```text
+description
+-> discovered spec
+-> baseline test
+-> diagnose failures
+-> rewrite one field
+-> test again
+-> final optimized spec
+```
 
-The central object is a `ToolSpec` with:
+## My idea / design thinking
 
-- `name`
-- `description`
-- `parameters`
-- `return_schema`
+My main thought process for this assignment was:
 
-The Optimizer does not ask an LLM to judge correctness. Instead, it uses a deterministic checker to score the returned tool call against the target spec:
+1. Keep generation and optimization separate.
+   The Discoverer is responsible for creating a reasonable first draft, and the
+   Optimizer is responsible for improving it.
 
-- correct tool name
-- required arguments present
-- no hallucinated arguments
-- argument types match
-- in the dimension-eval experiment, salient values are preserved
+2. Use deterministic evaluation instead of LLM-as-judge.
+   I do not use the LLM to decide whether a tool call is correct. I compare the
+   tool name, parameters, required fields, and types mechanically so the result
+   is reproducible.
 
-That means the headline numbers in this repo come from explicit comparison logic, not LLM-as-a-judge scoring.
+3. Test in multi-tool competition, not single-tool mode.
+   The model sees competing tools, so tool selection is actually challenging.
+   This better reflects how tool use works in real agent systems.
 
-## Quick start
+4. Rewrite only one field at a time.
+   Instead of regenerating the entire spec, the optimizer changes only the
+   blamed field. This makes the optimization process easier to analyze.
+
+5. Add guardrails.
+   I added a do-no-harm guard so a rewrite is rejected if it makes performance
+   worse on the current prompts.
+
+6. Explore failure cases beyond the main pipeline.
+   I also added experiments for degraded specs, confusion pairs, low-quality
+   descriptions, no-seed discovery, dimension-based evaluation, and structural
+   `needs_redesign` detection.
+
+## Project purpose
+
+The purpose of this project is not to build real production tools. The purpose
+is to study whether tool specs can be:
+
+- generated automatically
+- evaluated systematically
+- improved automatically through feedback
+
+This makes the project more of a research / assignment prototype than an app.
+
+## How to run the code
 
 ### 1. Install dependencies
-
-There is no `requirements.txt` yet, so install the small dependency set directly:
 
 ```bash
 python3 -m pip install openai pydantic diskcache python-dotenv truststore pytest
 ```
 
-### 2. Add environment variables
+### 2. Add API key
 
-Create a `.env` file in the repo root:
+Create a `.env` file in the project root:
 
 ```bash
 OPENAI_API_KEY=sk-...
 OPENAI_MODEL=gpt-4o-mini
 ```
 
-Notes:
+## Main run order
 
-- All LLM-backed scripts use OpenAI through `src/llm_client.py`.
-- All LLM calls are cached to `.llm_cache/`, so rerunning the same experiment is much cheaper.
-
-### 3. Verify the local test suite
-
-For a fully local run with no network call:
-
-```bash
-python3 -m pytest tests/ -q -k 'not live_smoke'
-```
-
-Current expected result in this repo:
-
-```text
-99 passed, 1 deselected
-```
-
-Why the filter matters:
-
-- `tests/test_llm_client.py` contains one real OpenAI smoke test.
-- If `OPENAI_API_KEY` is present, plain `pytest` may try that live request.
-- The `-k 'not live_smoke'` command is the reliable "local-only" check.
-
-## Main workflow
-
-If you want the core pipeline, run these three scripts in order:
+If you want to run the core assignment pipeline, use these scripts in order:
 
 ```bash
 python3 scripts/run_discoverer.py
@@ -113,129 +129,131 @@ python3 scripts/run_baseline.py
 python3 scripts/run_optimization.py
 ```
 
-What each step does:
+What they do:
 
-| Step | Script | Purpose | Main outputs |
-|---|---|---|---|
-| 0 | `scripts/run_discoverer.py` | Generate `ToolSpec` JSON and Python stubs from natural-language descriptions | `data/discovered_specs/`, `data/discovered_stubs/`, `data/discovery_report.json` |
-| 1 | `scripts/run_baseline.py` | Measure invocation accuracy of the discovered specs under multi-tool competition | `data/test_prompts/`, `data/logs/baseline.jsonl` |
-| 2 | `scripts/run_optimization.py` | Run the optimizer loop and compare original vs optimized specs on the same baseline prompts | `data/optimized_specs/`, `data/logs/optimization.jsonl`, `data/logs/final_eval.jsonl`, `data/optimization_report.json` |
+- `run_discoverer.py`
+  Reads the natural-language tool descriptions and generates discovered specs
+  and mock Python stubs.
 
-The repo already contains generated artifacts under `data/`, so you can inspect results immediately even before rerunning anything.
+- `run_baseline.py`
+  Tests the discovered specs in multi-tool competition and records baseline
+  invocation accuracy.
 
-## Results snapshot
+- `run_optimization.py`
+  Runs the optimization loop and compares before/after accuracy on the same
+  baseline prompts.
 
-The checked-in artifacts currently show:
+## Important output files
 
-| Experiment | Current checked-in result |
-|---|---|
-| Discovery validity | `11/11` generated specs validated |
-| Baseline invocation accuracy | `89.1%` (`49/55`) |
-| After optimization | `90.9%` (`+1.8pp`) |
-| Five-dimension eval | `51/55` calls correct on all five dimensions |
-| `values_ok` dimension | `42/42` applicable cases passed |
-| Confusion-pair experiment | `90.0% -> 95.0%` on 8 pair-member tools |
-| Low-quality description experiment | `64.0% -> 64.0%` |
-| No-seed Discoverer experiment | `70.9% -> 76.4%`, with `5/11` tools flagged `needs_redesign` |
-| Redesign detection | `3/5` structural defects flagged, `0/1` healthy controls false-flagged |
+After running the pipeline, the main outputs are:
 
-Those numbers come from these files:
+- `data/discovered_specs/`
+  Generated tool specs
 
-- `data/discovery_report.json`
+- `data/discovered_stubs/`
+  Generated Python mock stubs
+
+- `data/test_prompts/`
+  Baseline prompts used for evaluation
+
+- `data/optimized_specs/`
+  Final optimized specs
+
+- `data/logs/baseline.jsonl`
+  Baseline failure records
+
+- `data/logs/optimization.jsonl`
+  Optimization-loop records
+
+- `data/logs/final_eval.jsonl`
+  Final after-optimization evaluation records
+
 - `data/optimization_report.json`
-- `data/dimension_eval.json`
-- `data/confusion_report.json`
-- `data/lowqual/lowqual_report.json`
-- `data/noseed/noseed_report.json`
-- `data/redesign_detection.json`
+  Before/after summary
 
-## Additional experiments
+## Extra experiments
 
-The script names reflect the history of the project, so the numbering is not perfectly linear. The most useful follow-on scripts are:
+Besides the main pipeline, I added several extra scripts to study the assignment
+from different angles:
 
-| Script | Question | Main outputs |
-|---|---|---|
-| `scripts/run_phase3a.py` | What failure patterns already exist in the logs? | `data/phase3a_analysis.json` |
-| `scripts/run_degradation.py` | If we inject controlled spec bugs, can the Optimizer recover? | `data/degradation_results.json`, `data/logs/degradation.jsonl` |
-| `scripts/run_dimension_eval.py` | How do tool calls break down across five independent correctness dimensions? | `data/dimension_eval.json`, `data/logs/dimension_eval.jsonl`, `data/test_prompts_gt/` |
-| `scripts/run_confusion_experiment.py` | Can optimization recover accuracy when semantically overlapping tools compete? | `data/confusion_report.json`, `data/confusion_optimized/`, `data/logs/confusion.jsonl` |
-| `scripts/run_phase3c.py` | Which adversarial tool pairs are auto-discovered from baseline confusion? | `data/phase3c_results.json`, `data/logs/phase3c.jsonl` |
-| `scripts/run_lowqual_experiment.py` | What happens when the Discoverer is given vague descriptions? | `data/lowqual/` |
-| `scripts/run_noseed_experiment.py` | What happens when the Discoverer loses its few-shot seed templates? | `data/noseed/` |
-| `scripts/run_redesign_detection.py` | Can the system tell when a defect is structural and should be sent back for redesign? | `data/redesign_detection.json` |
+- `scripts/run_degradation.py`
+  Inject controlled bugs into specs and test whether the optimizer can recover.
 
-Helpful inspection/export utilities:
+- `scripts/run_dimension_eval.py`
+  Break correctness into five dimensions instead of using only one final label.
 
-- `scripts/inspect_failures.py data/logs/baseline.jsonl`
-- `scripts/export_degraded_specs.py`
-- `scripts/export_one_example.py`
+- `scripts/run_confusion_experiment.py`
+  Add overlapping tools and test whether optimization helps with wrong-tool
+  selection.
 
-## Project map
+- `scripts/run_lowqual_experiment.py`
+  Test what happens when the input descriptions are vague.
+
+- `scripts/run_noseed_experiment.py`
+  Test what happens when the Discoverer loses few-shot seed templates.
+
+- `scripts/run_redesign_detection.py`
+  Detect when the problem is structural and should be sent back for redesign
+  instead of continuing field-level rewrites.
+
+## Testing
+
+For local tests without making a live API request:
+
+```bash
+python3 -m pytest tests/ -q -k 'not live_smoke'
+```
+
+Expected result in the current repo:
+
+```text
+99 passed, 1 deselected
+```
+
+## Current result summary
+
+From the checked-in outputs in this repo:
+
+- 11 out of 11 tool descriptions were successfully turned into valid specs
+- baseline invocation accuracy is about `89.1%`
+- after optimization it improves to about `90.9%`
+- in the confusion-pair experiment, pair-member accuracy improves from `90.0%`
+  to `95.0%`
+
+These numbers are not the only point of the project, but they show that the
+pipeline can improve some specs and also reveal when some failures are
+structural rather than just local field mistakes.
+
+## Code structure
 
 ```text
 src/
-  schema.py                 core data model: ToolSpec, FailureRecord, helpers
-  llm_client.py             cached OpenAI client + mock client
+  schema.py
+  llm_client.py
   discoverer/
-    discoverer.py           top-level discovery pipeline
-    pattern_retriever.py    picks few-shot seeds
-    spec_generator.py       LLM: description -> ToolSpec
-    stub_generator.py       ToolSpec -> Python stub
-    static_validator.py     AST/rule validation for generated outputs
   optimizer/
-    test_prompt_generator.py
-    invocation_tester.py
-    failure_diagnoser.py
-    spec_rewriter.py
-    loop.py                 iterative optimization controller
 
 scripts/
   run_discoverer.py
   run_baseline.py
   run_optimization.py
-  ... experiment-specific scripts
+  ...extra experiment scripts
 
 data/
-  tool_descriptions.json    starting descriptions
-  seed_templates/           few-shot examples for discovery
-  discovered_specs/         generated specs
-  discovered_stubs/         generated Python stubs
-  test_prompts/             baseline prompts
-  optimized_specs/          optimized specs
-  logs/                     jsonl records for experiments
-  *_report.json             summary outputs
-
-data_v1_backup/
-  archived earlier version of the project outputs
+  discovered_specs/
+  discovered_stubs/
+  optimized_specs/
+  logs/
 ```
 
-## Files worth reading first
+## Short summary
 
-If you want to understand the repo quickly, start here:
+This assignment builds a full pipeline for:
 
-1. `src/schema.py`
-2. `src/discoverer/discoverer.py`
-3. `src/optimizer/loop.py`
-4. `scripts/run_discoverer.py`
-5. `scripts/run_optimization.py`
+- discovering tool specs from natural-language descriptions
+- evaluating tool-use quality
+- diagnosing why tool calls fail
+- improving the spec through targeted rewrites
 
-That path gives you the data model, the generation path, and the optimization path in the smallest number of files.
-
-## Design choices
-
-- Deterministic evaluation: correctness is computed by explicit comparison logic, not by an LLM judge.
-- Single-field rewrites: each optimizer step edits one blamed field rather than regenerating the whole spec.
-- Multi-tool competition: each test presents competing tools so tool selection is genuinely hard.
-- Do-no-harm guard: a candidate rewrite is rejected if it lowers current-round accuracy.
-- Redesign detection: when field-level edits cannot lift held-out performance, the system can return `needs_redesign` instead of pretending another rewrite will help.
-
-## Important caveats
-
-- Generated Python stubs are placeholders, not fully implemented external tools.
-- Most scripts require a working OpenAI API key and network access.
-- The repo is experimental and some utility scripts still reflect earlier tool names or earlier phases.
-- There is no packaging or CLI layer yet; the `scripts/` directory is the entrypoint.
-
-## One-line summary
-
-SpecForge is a compact experimental repo for generating tool specs, stress-testing them under multi-tool competition, and iteratively repairing the exact spec fields that cause invocation failures.
+The project is meant to show both the implementation and the reasoning behind
+automatic tool specification optimization.
