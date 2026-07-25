@@ -61,36 +61,6 @@ description
 -> final optimized spec
 ```
 
-## My idea / design thinking
-
-My main thought process for this assignment was:
-
-1. Keep generation and optimization separate.
-   The Discoverer is responsible for creating a reasonable first draft, and the
-   Optimizer is responsible for improving it.
-
-2. Use deterministic evaluation instead of LLM-as-judge.
-   I do not use the LLM to decide whether a tool call is correct. I compare the
-   tool name, parameters, required fields, and types mechanically so the result
-   is reproducible.
-
-3. Test in multi-tool competition, not single-tool mode.
-   The model sees competing tools, so tool selection is actually challenging.
-   This better reflects how tool use works in real agent systems.
-
-4. Rewrite only one field at a time.
-   Instead of regenerating the entire spec, the optimizer changes only the
-   blamed field. This makes the optimization process easier to analyze.
-
-5. Add guardrails.
-   I added a do-no-harm guard so a rewrite is rejected if it makes performance
-   worse on the current prompts.
-
-6. Explore failure cases beyond the main pipeline.
-   I also added experiments for degraded specs, confusion pairs, low-quality
-   descriptions, no-seed discovery, dimension-based evaluation, and structural
-   `needs_redesign` detection.
-
 ## Project purpose
 
 The purpose of this project is not to build real production tools. The purpose
@@ -245,15 +215,3 @@ data/
   optimized_specs/
   logs/
 ```
-
-## Short summary
-
-This assignment builds a full pipeline for:
-
-- discovering tool specs from natural-language descriptions
-- evaluating tool-use quality
-- diagnosing why tool calls fail
-- improving the spec through targeted rewrites
-
-The project is meant to show both the implementation and the reasoning behind
-automatic tool specification optimization.
